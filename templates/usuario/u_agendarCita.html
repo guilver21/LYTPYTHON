@@ -1,0 +1,197 @@
+<!-- HECHA POR LAURA -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre los servicios excepcionales de PetVet, tu clínica veterinaria de confianza. Ofrecemos atención médica integral para tus mascotas, desde consultas generales y vacunas hasta cirugías especializadas. Nuestro equipo dedicado está comprometido con el bienestar animal, proporcionando cuidados personalizados y servicios de calidad. Confía en PetVet para mantener a tus mascotas felices y saludables en cada etapa de sus vidas.">
+    <title>Página de los Servicios</title>
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/icon.png') }}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ url_for('static', filename='js/javascript-Laura.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilosL.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <img src="{{ url_for('static', filename='recursos/icon/menu.svg') }}" alt="Menú">
+        </div>
+        <div class="barra-lateral">
+            <div>
+                <div class="logo-pagina">
+                    <img src="{{ url_for('static', filename='imagenes/icon.png') }}" id="logo" alt="Logo PetVet">
+                    <span>Petvet</span>
+                </div>
+                <button class="boton-cita" onclick="agendarCita()">
+                    <img src="{{ url_for('static', filename='recursos/icon/mas.svg') }}" alt="Agendar cita">
+                    <span>Agendar cita</span>
+                </button>
+            </div>
+
+            <nav class="navegacion">
+                <ul>
+                    <li>
+                        <a href="/home/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/inicio.svg') }}" alt="Inicio" class="icon">
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/citas/agendadas/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/citasAgendadas.svg') }}" alt="Citas Agendadas" class="icon">
+                            <span>Citas Agendadas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/guarderia/cita/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/guaderia-pendiente.svg') }}" alt="Citas de Guardería Pendientes" class="icon">
+                            <span>Citas Guardería</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/servicios/solicitados/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/servicios-solicitado.svg') }}" alt="Servicios Solicitados" class="icon">
+                            <span>Servicios Solicitados</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/guarderia/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/guarderia.svg') }}" alt="Guardería" class="icon">
+                            <span>Guardería</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/adopcion/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/adopcion.svg') }}" alt="Adopción" class="icon">
+                           <span>Agendar Guardería</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="linea"></div>
+
+        <div class="usuario">
+            <a href="#" onclick="abrirModal()">
+                <img src="{{ url_for('static', filename='imagenes/user-.png') }}" alt="Usuario">
+                <div class="info-usuario">
+                    <div class="nombre-email">
+                        <span class="nombre">Maria Lopez</span>
+                        <span class="email">marial@gmail.com</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+                <div class="perfil-container">
+                    <div class="perfil-header">
+                        <div class="perfil-foto-container">
+                            <img id="perfil-foto" src="{{ url_for('static', filename='imagenes/default-profile.jpg') }}" alt="">
+                        </div>
+                        <div class="perfil-info">
+                            <h1>Maria Lopez</h1>
+                            <p>Email: <span id="email">marial@gmail.com</span></p>
+                            <p>Teléfono: <span id="telefono">809 456 7890</span></p>
+                            <p>Mascota: <span id="mascota">Perro</span></p>
+                        </div>
+                    </div>
+                    <div class="accion">
+                    <input type="file" id="subir-foto" accept="image/*" onchange="changeProfilePic()" >
+                    <label for="subir-foto">Cambiar foto de perfil</label>
+                    <button class="boton-cs-perfil" id="cerrar-sesion">Cerrar Sesión</button>
+                     °</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="box">
+        <main>
+             <div class="favor">
+             
+                <div class="texto2">
+                  <h1 class="h2">¡Por favor de llenar!</h1>
+                  <p class="p2">¡Completa este formulario antes de tu cita para el mejor cuidado de tu mascota! </p>
+              </div>
+            
+            <form class="formulario citaForm">
+                 <div class="form-1">
+                    <label for="nombre">Nombre:</label><br>
+                    <input type="text" id="nombre" placeholder="Nombre" name="nombre" class="form-input" required><br>
+
+                    <label for="apellido">Apellido:</label><br>
+                    <input type="text" id="apellido" placeholder="apellido" name="apellido" class="form-input" required><br>
+
+                    <label for="email">Correo electrónico:</label><br>
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico" class="form-input" required><br>
+
+                    <label for="fecha">Fecha:</label><br>
+                    <input type="date" id="fecha" name="fecha" class="form-input" required><br>
+
+            
+               
+
+                
+
+                <div class="form-2">
+
+
+                    <label for="telefono">Teléfono:</label><br>
+                    <input type="tel" id="telefono" placeholder="telefono" name="telefono" class="form-input" required><br>
+                
+
+                     <label for="mascota">Mascota:</label><br>
+                    <select id="mascota" name="mascota" class="form-input" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="gato">Gato</option>
+                        <option value="ave">Ave</option>
+                        <option value="roedor">Roedor</option>
+                        <option value="perro">Perro</option>
+                        <option value="perro">Otros</option>
+
+                    </select><br>
+                    <label for="tanda">Tanda:</label>
+                    <select  class="form-input" name="tanda" id="tanda">
+                        <option value="Mañana">Mañana</option>
+                        <option value="Tarde">Tarde</option>
+                    </select>
+                     <label for="servicio" id="servicios">Servicios:</label><br>
+                    <div>
+                        <input type="checkbox" name="Lyme" value="2000" >Higiene para Mascotas
+                    </div><br>
+
+                    <div>
+                        <input type="checkbox" name="Lyme" value="2000">Chequeo General
+                    </div><br>
+
+                    <div>
+                        <input type="checkbox" name="Lyme" value="2000">Vacunación y Medicación
+                    </div><br>
+
+                </div>
+
+                </div>
+                <div>
+                     <textarea class="mss" placeholder="Si hay alguna informacion relevante háznoslo saber aqui!!" name="mensaje"></textarea><br>
+                </div>
+               
+
+                <div class="boton">
+                    <button  type="submit" class="ancho" >Enviar</button>
+                    <button type="button" class="anchoE" onclick="verCitas()">Ver Citas</button>
+    
+                </div>
+            </form>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/formulario.js') }}"></script>
+</body>
+
+</html>

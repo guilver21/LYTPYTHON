@@ -1,0 +1,150 @@
+.navegacion .despliegue {
+    display: none;
+    position: absolute;
+    background-color: #193A6A;
+    z-index: 1;
+    min-width: 180px; /* Ancho mínimo más grande */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+.navegacion .despliegue a {
+    padding: 12px 20px; /* Más padding para los enlaces del submenú */
+    text-decoration: none;
+    display: block;
+    color: #fff; /* Color de texto blanco */
+   
+}
+
+.navegacion .item:hover  .despliegue {
+    display: block;
+}
+
+.navegacion .item a:hover {
+    background-color: #2b69c5;
+    height: 43px;
+}
+
+.navegacion .despliegue a:hover {
+    background-color: #2b69c5;
+    height: 43px;
+}
+
+ 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo más oscuro */
+}
+
+.modal-contenido {
+    background-color: #102544;
+    font-size: 18px;
+    color: #fff;
+    margin: 15% auto;
+    padding: 30px; /* Más padding */
+    border: none; /* Sin borde */
+    width: 30%;
+    max-width: 500px; /* Ancho máximo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Sombra */
+    text-align: center;
+    position: relative; /* Para posicionar el botón de cerrar */
+}
+
+.cerrar {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute; /* Posición absoluta */
+    top: 10px; /* Distancia desde la parte superior */
+    right: 20px; /* Distancia desde la derecha */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre él */
+}
+
+.cerrar:hover,
+.cerrar:focus {
+    color: #ddd; /* Cambiar el color al pasar sobre él */
+    text-decoration: none;
+}
+
+#confirmarCerrarSesion {
+    background-color: #fff;
+    color: #102544;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px; /* Espacio superior */
+}
+
+#confirmarCerrarSesion:hover {
+    background-color: #ddd;
+}
+
+.center {
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+    /* justify-content: center; */
+    
+}
+
+
+
+/* 777777 5555 --------------------------------------- */
+.hed-i h1 {
+    background-color: #193A6A;
+    padding: 10px;
+    font-size: 27px;
+    color: white; /* Agrega color de texto blanco para el título */
+}
+
+.conten-header{
+    
+    background-color: #193A6A;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.conten-header a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.foto-nom{
+
+    width: 14%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.foto-nom img{
+    border-radius: 50%;
+}
+.nombre{
+    font-size: 15px;
+}
+.nav-alto .lista-menu{
+    font-size: 5px;
+    /* display: flex;
+    color: #fff; */
+    /* background-color: #4AD818; */
+    /* width: 900px;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative; */
+}

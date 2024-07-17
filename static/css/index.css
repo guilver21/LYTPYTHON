@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HECHO POR LAURA */
+
+
+.contenedor {
+    margin: 0 auto; /* el 0, arriba y abajo */   /* el auto, izquierda y derecha */
+    margin-left: 1px; /* Que la imagen cubra todo el espacio hacia la izquierda */
+    max-width: 1200px; /* No puede pasar de los 1200px */
+    width: 300%;  /* el 100% de la imagen */
+}
+
+.imagen-fomulario {
+    background-image: url("../imagenes/imagenPrincipal.jpg");/* Imagen desde css */
+    background-position: center center; /* para que la img se centre  */
+    background-size: cover; /* cover: que la imagen se adapte al cotenedor padre, osea al imagen-formulario */
+    flex: 65%; /* flex es la la propiedad resumida que indica la capacidad de un elemento flexible para alterar sus dimensiones y llenar el espacio disponible. 
+    Puse 65% para que cubra ese espacio y los 35 que quedan para el formulario,*/
+    margin-bottom: -150px; 
+    /* para que quede ajustada haci abajo */
+}
+
+
+.imagen-fomulario{
+    height: auto;  /* que la imagen se coloque en su lugar con la altura */
+    background-position: right;  /* Para que la imagen se coloque a la derecha  */
+}
+
+.contenedor-formulario {
+    display: flex; 
+    margin-bottom: 90px;
+    /*para que el contenedor se ponga  flexible y este en su lugar */
+}
+
+
+.formulario {
+    margin-left: 30px;
+    margin-top: 30px;
+    padding: 5px; /* para que el formulario tenga el espacio de todos los lados */
+}
+
+.input label, .inicio, a{
+    /* color: #193A6A; */
+    color:#1D1D1D;
+    /* color de letra para el usuario la contraseña y el iniciaio de seccion azul */
+    text-decoration: none; /* Quitarle el enlace (la rayita que sale debajo) */
+    
+}
+
+
+.input {
+    font-size: 20px; /* Tamano de letra */
+    font-weight: bold;  /* letra en negrita */
+    margin: 20px 10px; /* Espacio arriba, abajo y izquierda de las letras  */
+}
+
+.input input{
+    width: 129%;  /* Ancho de los cuadritos */
+    padding: 10px 16px; /* espacio de los cuadros y de lo que esta dentro */
+    margin-top: 5px; /* Espacio de arriba entre los cuadros */
+    height: 3.120rem;
+    border-radius: 0.5rem;
+    border: 1px solid #1D1D1D;
+
+}
+
+
+.iniciarSeccion{
+    cursor: pointer;
+    text-align: center;
+     width: 124%;
+     padding: 16px 130px; /* espacio de los cuadros y de lo que esta dentro */
+     border-radius: 10px; /* bordes redondos en las esquinas */
+     background-color: #193A6A;  /* Fondo color azul */
+     margin-left: 10px;
+       /* Para centrar el cuadrito con los demas */
+}
+
+ .iniciarSeccion a{
+    color: white;  /* Ponerle color blanco al iniciar seccion, ya que hay 3 enlaces, Y no pueden ir de color blanco, si no azul */
+}
+
+.registrate {
+    text-decoration: none; /* Quitarle el enlace (la rayita que sale debajo) */
+    margin-top: 25px; /* Espacio de arriba, para que no quede tan pegado de (INICIAR SECCION) */
+    color: rgb(81, 79, 79);
+    /* color: gray; */
+    margin-bottom: 10px; /* Espacio de abajo para que no quede tan pegado de (¿Olvidaste tu contraseña?) */
+}
+
+.password-olvidada, a {
+    color: #193A6A;
+    font-size: 16px;
+    margin-top: 20px;
+    text-decoration: none;  /* Quitarle el enlace (la rayita que sale debajo) */
+}
+
+.logo{
+    margin-bottom: -50px;
+    margin-left: 20%;
+    margin-bottom: 15px;
+     width: 350px;
+    height: auto; 
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .contenedor {
+        width: 5%;
+    }
+
+    .input {
+        font-size: 18px; /* Tamano de letra */
+    }
+
+    .input input{
+        max-width: 100%;  /* Ancho de los cuadritos */
+       
+    }
+    
+    .logo{
+        margin-left:  -20px;
+        margin-top: -30px;
+         width: 350px;
+        
+    }
+    
+
+    .iniciarSeccion{
+     width: 90%;
+     margin-left: 10px;
+     padding: 10px; /* espacio de los cuadros y de lo que esta dentro */
+    
+}
+
+    .input input{
+    height: 2.50rem;
+}
+
+    .password-olvidada, a {
+    margin-left: 10px;
+   
+}
+
+    
+}
+
+
+

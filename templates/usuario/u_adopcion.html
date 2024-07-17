@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre los servicios excepcionales de PetVet, tu clínica veterinaria de confianza. Ofrecemos atención médica integral para tus mascotas, desde consultas generales y vacunas hasta cirugías especializadas. Nuestro equipo dedicado está comprometido con el bienestar animal, proporcionando cuidados personalizados y servicios de calidad. Confía en PetVet para mantener a tus mascotas felices y saludables en cada etapa de sus vidas.">
+    <title>Página de los Servicios</title>
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilosL.css') }}">
+</head>
+
+<body>
+   <header>
+        <div class="menu">
+            <img src="{{ url_for('static', filename='recursos/icon/menu.svg') }}" alt="Menú">
+        </div>
+        <div class="barra-lateral">
+            <div>
+                <div class="logo-pagina">
+                    <img src="{{ url_for('static', filename='imagenes/icon.png') }}" id="logo" alt="Logo PetVet">
+                    <span>Petvet</span>
+                </div>
+                <button class="boton-cita" onclick="agendarCita()">
+                    <img src="{{ url_for('static', filename='recursos/icon/mas.svg') }}" alt="Agendar cita">
+                    <span>Agendar cita</span>
+                </button>
+            </div>
+
+            <nav class="navegacion">
+                <ul>
+                    <li>
+                        <a href="/home/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/inicio.svg') }}" alt="Inicio" class="icon">
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/citas/agendadas/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/citasAgendadas.svg') }}" alt="Citas Agendadas" class="icon">
+                            <span>Citas Agendadas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/guarderia/cita/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/guaderia-pendiente.svg') }}" alt="Citas de Guardería Pendientes" class="icon">
+                            <span>Citas Guardería</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/servicios/solicitados/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/servicios-solicitado.svg') }}" alt="Servicios Solicitados" class="icon">
+                            <span>Servicios Solicitados</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/guarderia/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/guarderia.svg') }}" alt="Guardería" class="icon">
+                            <span>Agendar Guardería</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="{{ url_for('static', filename='recursos/icon/adopcion.svg') }}" alt="Adopción" class="icon">
+                            <span>Adopción</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="linea"></div>
+
+           <div class="usuario">
+            <a href="#" onclick="abrirModal()">
+                <img src="{{ url_for('static', filename='imagenes/user-.png') }}" alt="Usuario">
+                <div class="info-usuario">
+                    <div class="nombre-email">
+                        <span class="nombre">Maria Lopez</span>
+                        <span class="email">marial@gmail.com</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+                <div class="perfil-container">
+                    <div class="perfil-header">
+                        <div class="perfil-foto-container">
+                            <img id="perfil-foto" src="{{ url_for('static', filename='imagenes/default-profile.jpg') }}" alt="Perfil">
+                        </div>
+                        <div class="perfil-info">
+                            <h1>Maria Lopez</h1>
+                            <p>Email: <span id="email">marial@gmail.com</span></p>
+                            <p>Teléfono: <span id="telefono">809 456 7890</span></p>
+                            <p>Mascota: <span id="mascota">Perro</span></p>
+                        </div>
+                    </div>
+                    <div class="accion">
+                      <input type="file" id="subir-foto" accept="image/*" onchange="changeProfilePic()" >
+                      <label for="subir-foto">Cambiar foto de perfil</label>
+                     <button class="boton-cs-perfil" id="cerrar-sesion">Cerrar Sesión</button>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <main>
+            <div class="adopt-container">
+        <div class="texto">
+            <h1 class="h1">¡Adopta un Amigo Fiel!</h1>
+            <p class="p">¡Dale a un perro la oportunidad de encontrar un hogar amoroso!</p>
+        </div>
+    </div>
+        <div class="padre">
+            <article class="hijo">
+                <div class="hijo__preview">
+                    <img src="{{ url_for('static', filename='imagenes/p1.jpg') }}" alt="Lizzy">
+                </div>
+                <div class="hijo__content">
+                    <h2 class="hijo__title">Lizzy</h2>
+                    <p class="hijo__descrip">
+                        Soy una perrita dulce y tranquila, siempre lista para jugar.
+                    </p>
+                    <div class="hijo__properties">
+                        6 meses | 2kg | hembra
+                    </div>
+                    <div class="whatsapp-icon">
+                        <a href="https://web.whatsapp.com/" target="_blank"><img src="{{ url_for('static', filename='imagenes/imagen-whatsapp.jpg') }}" alt="WhatsApp"></a>
+                    </div>
+                </div>
+            </article>
+            <article class="hijo">
+                <div class="hijo__preview1">
+                    <img src="{{ url_for('static', filename='imagenes/p2.jpg') }}" alt="Noa">
+                </div>
+                <div class="hijo__content1">
+                    <h2 class="hijo__title">Noa</h2>
+                    <p class="hijo__descrip">
+                        Soy un cachorro con un pelaje suave, cariñoso y me encanta explorar.
+                    </p>
+                    <div class="hijo__properties">
+                        2 años | 3kg | macho
+                    </div>
+                    <div class="whatsapp-icon">
+                        <a href="https://web.whatsapp.com/" target="_blank"><img src="{{ url_for('static', filename='imagenes/imagen-whatsapp.jpg') }}" alt="WhatsApp"></a>
+                    </div>
+                </div>
+            </article>
+            <article class="hijo">
+                <div class="hijo__preview2">
+                    <img src="{{ url_for('static', filename='imagenes/p3.jpg') }}" alt="Sancocho">
+                </div>
+                <div class="hijo__content2">
+                    <h2 class="hijo__title">Sancocho</h2>
+                    <p class="hijo__descrip">
+                        Me encanta salir a pasear y soy muy juguetona. Con pelaje suave y lindo.
+                    </p>
+                    <div class="hijo__properties">
+                        2 años | 3kg | hembra
+                    </div>
+                    <div class="whatsapp-icon">
+                        <a href="https://web.whatsapp.com/" target="_blank"><img src="{{ url_for('static', filename='imagenes/imagen-whatsapp.jpg') }}" alt="WhatsApp"></a>
+                    </div>
+                </div>
+            </article>
+            <article class="hijo">
+                <div class="hijo__preview3">
+                    <img src="{{ url_for('static', filename='imagenes/p4.jpg') }}" alt="Espencer">
+                </div>
+                <div class="hijo__content3">
+                    <h2 class="hijo__title">Espencer</h2>
+                    <p class="hijo__descrip">
+                        Soy un cachorro lleno de energía y me encanta correr en los parques.
+                    </p>
+                    <div class="hijo__properties">
+                        5 meses | 5kg | macho
+                    </div>
+                    <div class="whatsapp-icon">
+                        <a href="https://web.whatsapp.com/" target="_blank"><img src="{{ url_for('static', filename='imagenes/imagen-whatsapp.jpg') }}" alt="WhatsApp"></a>
+                    </div>
+                </div>
+            </article>
+            <article class="hijo">
+                <div class="hijo__preview">
+                    <img src="{{ url_for('static', filename='imagenes/p5.jpg') }}" alt="Luna">
+                </div>
+                <div class="hijo__content">
+                    <h2 class="hijo__title">Luna</h2>
+                    <p class="hijo__descrip">
+                        Me encanta comer galletas, soy hiperactiva y juguetona.
+                    </p>
+                    <div class="hijo__properties">
+                        5 años | 4kg | hembra
+                    </div>
+                    <div class="whatsapp-icon">
+                        <a href="https://web.whatsapp.com/" target="_blank"><img src="{{ url_for('static', filename='imagenes/imagen-whatsapp.jpg') }}" alt="WhatsApp"></a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+</body>
+
+</html>

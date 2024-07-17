@@ -1,0 +1,114 @@
+<!-- HECHA POR LAURA-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agenda fácilmente citas para el cuidado de tus mascotas en PetVet. Ofrecemos un proceso simple y eficiente para proporcionar la mejor atención veterinaria a tus animales. Confía en nosotros para simplificar el cuidado de tus seres queridos.">
+    <title>Sistema del administrador</title>
+    <link rel="icon" href="imagenes/icon.png">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="js/ponerFoto.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="body-admin">
+
+<header class="alto-admi">
+    <div>
+        <figure><img src="../imagenes/logo.png" class="logo" alt="Logo petvet" title="Logo"></figure>
+    </div>
+
+    <div class="bajo-header">
+        <div class="text-pag-b">
+            <h1>Panel de Administrador</h1>
+        </div>
+
+        <div class="con-botones">
+            <a href="#">
+                <figure class="icons"><img class="botones" src="../imagenes/a-home.png" alt="Inicio" title="Inicio"></figure>
+            </a>
+
+            <a href="#">
+                <figure class="icons"><img class="botones" src="../imagenes/a-saalir.png" alt="Cerrar Sesion" title="Cerrar Sesion"></figure>
+            </a>
+        </div>
+    </div>
+</header>
+<body>
+  <body>
+      <div class="container">
+          <div class="left-container">
+              <div class="conten1">
+                  <form class="form-horizontal">
+                      <!-- formulario -->
+                      <div class="form-group">
+                          <label for="nombre">Nombre</label>
+                          <input type="text" id="nombre" name="nombre">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="descrip">Descripción</label>
+                          <input type="text" id="descrip" name="descrip">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="Edad">Edad</label>
+                          <input type="number" id="Edad" name="Edad">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="kg">Kg</label>
+                          <input type="number" id="kg" name="kg">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="sexo">Sexo</label>
+                          <select id="sexo" name="sexo">
+                              <option value="">Selecciona</option>
+                              <option value="masculino">Macho</option>
+                              <option value="femenino">Hembra</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="txtImagen" class="form-label">Imagen:</label>
+                          <input type="file" class="form-control" name="txtImagen" id="txtImagen"
+                              aria-describedby="helpId" placeholder="Seleccione la imagen">
+                      </div>
+
+                      <div class="boton">
+                          <button type="submit" class="enviar">Enviar</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+
+          <table id="citasTable">
+              <thead>
+                  <tr>
+                      <th>Nombre</th>
+                      <th>Descripción</th>
+                      <th>Edad</th>
+                      <th>Kg</th>
+                      <th>Sexo</th>
+                      <th>Imagen</th>
+                      <th>Acciones</th>
+                  </tr>
+                  <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th> <button type="" class="eliminar">Eliminar</button></th>
+                  </tr>
+              </thead>
+              <tbody></tbody>
+          </table>
+      </div>
+  </body>
+</html>
+
+

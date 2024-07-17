@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página para visualizar citas pendientes en Petvet">
+    <title>Citas pendientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos-yohan.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/icon.png') }}">
+</head>
+<body class="body-agandadas">
+    <header>
+        <div class="menu">
+            <img src="{{ url_for('static', filename='recursos/icon/menu.svg') }}" alt="Menú">
+        </div>
+        <div class="barra-lateral">
+            <div>
+                <div class="logo-pagina">
+                    <img src="{{ url_for('static', filename='imagenes/icon.png') }}" id="logo" alt="Logo PetVet">
+                    <span>Petvet</span>
+                </div>
+                <button class="boton-cita" onclick="agendarCita()">
+                    <img src="{{ url_for('static', filename='recursos/icon/mas.svg') }}" alt="Agendar cita">
+                    <span>Agendar cita</span>
+                </button>
+            </div>
+
+            <nav class="navegacion">
+                <ul>
+                    <li>
+                        <a href="/home/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/inicio.svg') }}" alt="Inicio" class="icon">
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/citas/agendadas/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/citasAgendadas.svg') }}" alt="Citas Agendadas" class="icon">
+                            <span>Citas Agendadas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/guarderia/cita/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/guaderia-pendiente.svg') }}" alt="Citas de Guardería Pendientes" class="icon">
+                            <span>Citas Guardería</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/servicios/solicitados/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/servicios-solicitado.svg') }}" alt="Servicios Solicitados" class="icon">
+                            <span>Servicios Solicitados</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/guarderia/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/guarderia.svg') }}" alt="Guardería" class="icon">
+                           <span>Agendar Guardería</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/adopcion/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/adopcion.svg') }}" alt="Adopción" class="icon">
+                            <span>Adopción</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="linea"></div>
+
+            <div class="usuario">
+                <a href="#" onclick="abrirModal()">
+                    <img src="{{ url_for('static', filename='imagenes/user-.png') }}" alt="Usuario">
+                    <div class="info-usuario">
+                        <div class="nombre-email">
+                            <span class="nombre">Maria Lopez</span>
+                            <span class="email">marial@gmail.com</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="modal" id="modal">
+                <div class="modal-content">
+                    <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+                    <div class="perfil-container">
+                        <div class="perfil-header">
+                            <div class="perfil-foto-container">
+                                <img id="perfil-foto" src="{{ url_for('static', filename='imagenes/default-profile.jpg') }}" alt="">
+                            </div>
+                            <div class="perfil-info">
+                                <h1>Maria Lopez</h1>
+                                <p>Email: <span id="email">marial@gmail.com</span></p>
+                                <p>Teléfono: <span id="telefono">809 456 7890</span></p>
+                                <p>Mascota: <span id="mascota">Perro</span></p>
+                            </div>
+                        </div>
+                        <div class="accion">
+                            <input type="file" id="subir-foto" accept="image/*" onchange="changeProfilePic()">
+                            <label for="subir-foto">Cambiar foto de perfil</label>
+                            <button class="boton-cs-perfil" id="cerrar-sesion">Cerrar Sesión</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="con-agendadas">
+        <div class="con-tabla">
+            <table class="tablas-agendadas">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tanda</th>
+                        <th>Precio</th>
+                        <th>Dirección</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="blanco">
+                        <td>04/06/2024</td>
+                        <td>Tarde</td>
+                        <td>3,000</td>
+                        <td>Los prados calle 17 casa numero 10 santiago de los caballeros</td>
+                    </tr>
+                    <tr class="gris">
+                        <td>04/06/2024</td>
+                        <td>Tarde</td>
+                        <td>3,000</td>
+                        <td>Los prados calle 17 casa numero 10 santiago de los caballeros</td>
+                    </tr>
+                    <tr class="blanco">
+                        <td>04/06/2024</td>
+                        <td>Tarde</td>
+                        <td>3,000</td>
+                        <td>Los prados calle 17 casa numero 10 santiago de los caballeros</td>
+                    </tr>
+                    <tr class="gris">
+                        <td>04/06/2024</td>
+                        <td>Tarde</td>
+                        <td>3,000</td>
+                        <td>Los prados calle 17 casa numero 10 santiago de los caballeros</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+</body>
+</html>

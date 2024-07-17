@@ -1,0 +1,817 @@
+
+/* HECHO POR TIARA */
+
+/* Perfil hecho por Tiara */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Centrado vertical y horizontal */
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+    max-width: 500px; 
+    max-height: 80vh; 
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.cerrar-modal:hover,
+.cerrar-modal:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.perfil-container {
+    padding: 30px;
+    text-align: center; 
+}
+
+.perfil-foto-container {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 4px solid #ffffff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin: 0 auto 20px; 
+}
+
+.perfil-foto-container img {
+    width: 100%;
+    height: auto;
+}
+
+.perfil-info {
+    margin-bottom: 20px;
+}
+
+.perfil-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.perfil-info p {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #666666;
+}
+
+.accion .cambiar-foto {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.accion {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.accion input {
+    display: none; /* Ocultar el input file */
+}
+
+.accion label,
+.accion .boton-cs-perfil {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #193A6A;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px 10px; /* Espaciado entre los elementos */
+    text-align: center;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+.accion label:hover,
+.accion .boton-cs-perfil:hover {
+    background-color: #0056b3;
+}
+
+
+.accion .boton-cs-perfil {
+    background-color: #193A6A;
+} 
+
+/* Estilos del header */
+
+:root{
+    --color-barra-lateral:#fff;
+    --color-texto:#000;
+    --color-texto-menu:rgb(134, 136, 144);
+    --color-boton:#000;
+    --color-boton-texto:rgb(225, 225, 225);
+    --color-menu-hover:rgb(238, 238, 238);
+    --color-menu-hover-texto:rgb(0,0,0);
+    --color-linea:rgb(180,180,180);
+    --color-scroll:rgb(192,192,192);
+    --color-scroll-hover:rgb(134,134,134);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+}
+
+main {
+    margin-left: 250px;
+    padding: 30px;
+    transition: margin-left 0.5s ease; 
+}
+
+main.min-main {
+    margin-left: 80px;
+}
+
+
+.menu {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color:  #193A6A;
+    right:15px;
+    top:15px;
+    z-index: 100;
+}
+
+.menu img {
+    width: 30px;
+    height: auto;
+}
+
+
+.barra-lateral {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    height: 100%;
+    overflow: hidden;
+    padding: 20px 15px;
+    background-color: var(--color-barra-lateral);
+    color: #000;
+    position: fixed;
+    transition: width 0.5s ease, left 0.5s ease;
+    z-index: 50;
+}
+
+.mini-barra-lateral {
+    width: 80px;
+}
+
+.barra-lateral span {
+    width: 100px;
+    font-size: 18px;
+    text-align: left;
+    opacity: 1;
+    transition: opacity 0.5s ease, width 0.5s ease;
+    white-space: nowrap; /* Evita que el texto se quiebre */
+}
+
+.barra-lateral span.oculto {
+    opacity: 0;
+    width: 0;
+    overflow: hidden; /* Oculta el texto */
+}
+
+.barra-lateral .logo-pagina {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.barra-lateral .logo-pagina img {
+    min-width: 50px;
+    max-width: 50px;
+    cursor: pointer;
+}
+
+.barra-lateral .logo-pagina span {
+    margin-left: 5px;
+    font-size: 25px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Para que no se vea el texto */
+.barra-lateral .boton-cita {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-boton);
+    color:#fff;
+}
+
+.boton-cita {
+  cursor: pointer; 
+  transition: all 0.5s ease; 
+}
+
+.boton-cita:hover {
+    transform: translateY(-4px);;
+}
+
+    
+.barra-lateral .boton-cita img {
+    width: 15px;
+    height: auto;
+    min-width: 20px;
+    max-width: 50px;
+    margin-right: 5px; /* Espacio entre img y span */
+}
+
+.barra-lateral .navegacion {
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+/* Para personalizar scroll */
+.barra-lateral .navegacion::-webkit-scrollbar {
+    width: 5px;
+}
+
+.barra-lateral .navegacion::-webkit-scrollbar-thumb {
+    background-color: var(--color-scroll);
+    border-radius: 5px;
+}
+
+.barra-lateral .navegacion::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-scroll-hover);
+}
+
+.barra-lateral .navegacion li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.barra-lateral .navegacion a {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: var(--color-barra-lateral);
+    color: var(--color-texto-menu);
+    padding: 0 10px;
+}
+
+.barra-lateral .navegacion a:hover {
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
+.barra-lateral .navegacion img {
+    width: 15px;
+    height: auto;
+    min-width: 20px;
+    max-width: 50px;
+    margin-right: 10px;
+}
+
+.barra-lateral .linea {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-linea);
+}
+
+.barra-lateral .usuario {
+    width: 100%;
+    display: flex;
+}
+
+.barra-lateral .usuario img {
+    width: 40px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 20%;
+    margin-top: 10px;
+}
+
+.barra-lateral .usuario a {
+    display: flex; 
+    align-items: center; 
+    text-decoration: none; 
+}
+
+
+.barra-lateral .usuario .info-usuario {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-texto);
+    overflow: hidden;
+}
+
+.barra-lateral .usuario .nombre-email {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.barra-lateral .usuario .nombre {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.barra-lateral .usuario .email {
+    font-size: 13px;
+}
+
+.nombre-email {
+    display: flex; 
+    flex-direction: column; 
+    margin-left: 10px; 
+}
+
+
+/* fin de estilos de header - Tiara */
+
+
+
+/* Esta parte esta siendo trabajada por yohan */
+
+
+
+
+figure{
+      height: 24%;
+      width:45% ;
+     
+}
+.logo, .logo img{
+    /* tamaños del las imagenes de el logo */
+     height: 40%;
+    width: 40%;
+    margin-left:20px ;    
+     cursor: pointer;  /*Presenta la manita cuando estes en el logo */ 
+
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+.usr a{
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+
+}
+
+.usr img{
+    margin-right: 10px;
+}
+
+.agen {
+    color: #ff0000;
+    width: 90%;
+    margin-top: 20px;
+    /* background-color: #193A6A; */
+    display: flex;
+
+    justify-content:end;
+
+    
+} 
+.agen a{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #193A6A; */
+    font-size: clamp(1.10em, 2vw,1em );
+    height: 50px;
+    border-radius: 5px;
+    width: 15%;
+    background: linear-gradient(315deg, #17345f, #1b3e71);
+
+    
+}
+
+
+.con-tabla{
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* background-color: #4AD818; */
+}
+
+
+table{
+    font-size: clamp(1em, 1.5vw, 1.3em );
+    margin-top: 20px;
+    text-align: center;
+    width: 90%;
+    border-collapse: collapse;/*Fusionar los bordes  */
+
+}
+
+th{
+    color: #fff;
+}
+th,td{
+    padding:17px;
+}
+
+thead{
+    background-color: #193A6A;
+}
+
+.blanco{
+    background-color: #fff;
+}
+.gris{
+    background-color: #e7e6e6;
+}
+tbody tr{
+    padding: 20px;
+}
+
+.verde{
+   color: #4AD818;
+   font-weight: 900;
+}
+/*  */
+.roja{
+    /* border-left: solid 2px #302e2e; */
+    /* padding-left: 6px; */
+   color:#FF0000 ;
+   font-weight: 900;
+}
+
+/* .verde:hover{
+    color: #4AD818;
+    border-bottom: solid 2px #4AD818;
+    
+} */
+
+.roja:hover{
+    color:#FF0000 ;
+      border-bottom: solid 2px #FF0000;
+    
+
+}
+
+
+
+
+/* u_registroMascotas.html y  u_registrousuario.html  Hecho por tiara*/
+
+
+
+
+
+.container {
+    background-color: white;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+}
+.medioRegistro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    background-color: #19396a15;
+    /* background-color: #0a6bfd67; */
+}
+
+.medio {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.medio img {
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+
+.medio h1 {
+    font-size: 25px;
+    color: #003366;
+    margin: 0;
+}
+
+.formulario .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.formulario .form-group {
+    margin-bottom: 15px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    flex: 1 1 45%;
+}
+
+.formulario label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.formulario input, .formulario select, .formulario button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.formulario button {
+    background-color: #003366;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formulario button:hover {
+    background-color: #0055cc;
+}
+
+.formulario .form-group p {
+    margin: 0;
+}
+
+.formulario .form-group a {
+    color: #0055cc;
+    text-decoration: none;
+}
+
+.formulario .form-group a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Estilos de listado de mascotas y usuarios ------------------------------------------------------------------*/
+
+
+
+
+.a-hed {
+  
+    display: flex;
+    justify-content: space-between;
+    
+} 
+
+.botones-lis{
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+   
+}
+
+.botones-lis .icons img{
+      width: 45px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.titulo-listas{
+    background-color: #193A6A;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.galeria article {
+    display: inline-block;
+    margin-right: 50px;
+    
+}
+
+.galeria article img {
+    width: 250px; 
+    height: auto; 
+   
+}
+
+.galeria article img:hover {
+    transform: scale(1.1);
+}
+
+.pie {
+    text-align: center;
+    color: #102544;
+}
+
+/* Pagina de servicios a domicilio------------------------------------------------------------ */
+
+.serviAdomi-alto{
+    text-align: center;/* centrar el texto */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+.serviAdomi-alto .h1 {
+    color: #193A6A;
+    font-size: 3em;
+    margin-top: 20;
+}
+.serviAdomi-alto.p {
+    color: #333;
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+.label-servicios{
+     display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-servicios{
+    display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.con-servicios{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.servicios-vacunas{
+    margin-top: 20px;
+}
+.enviar{
+    background-color: #193A6A;
+    padding: 20px;
+    border: solid 0;
+    color: #fff;
+    border-radius: 7px;
+    width: 15%;
+    font-size: 20px;
+} 
+
+.Total{
+    font-size: 24px;
+    margin-left: 8%;
+    margin-top: 20px;
+}
+.pedir{
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #5cb85c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+
+     
+    /* media queries del header */
+
+  @media (max-height: 600px) {
+
+     
+    /* media queries del header */
+    .barra-lateral .logo-pagina {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 600px) {
+   
+    .barra-lateral {
+        position: fixed;
+        left: -250px;
+    }
+
+    .max-barra-lateral {
+        left: 0;
+    }
+
+    .menu {
+        display: flex;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 20px; /* Ajuste del padding para pantallas pequeñas */
+    }
+
+    main.min-main {
+        margin-left: 0;
+    }
+
+    .servicio-contenedor {
+        margin-left: 0; /* Ajuste del margen para pantallas pequeñas */
+    }
+
+    /* Tabla de citas agendadas */
+     th,td{
+     /* font-size: clamp(0.6em, 0.9vw, 1.5em ); */
+     font-size: 12px;
+     padding-right: 3px;
+     padding-left:3px;
+
+    }
+       .agen a{
+        font-size: clamp(0.9em, 1vw, 4em );
+        height: 30px;
+        width: 80px;
+    }
+}
+   
+
+
+
+@media (min-width: 601px) and (max-width: 1000px){
+    /* Citas agendadas */
+    .barra-lateral{
+        width: 200px;
+        /* background-color: #193A6A; */
+    }
+    th,td{
+     font-size: clamp(0.6em, 0.9vw, 1.5em );
+     /* font-size: 8px; */
+     padding-right: 3px;
+     padding-left:3px;
+
+    }
+    .agen a{
+        font-size: clamp(0.9em, 1vw, 4em );
+        height: 30px;
+        width: 80px;
+    }
+}
+    
+
+ 

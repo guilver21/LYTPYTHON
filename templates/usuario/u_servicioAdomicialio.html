@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios a domicilio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos-yohan.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/icon.png') }}">
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <img src="{{ url_for('static', filename='recursos/icon/menu.svg') }}" alt="Menú">
+        </div>
+        <div class="barra-lateral">
+            <div>
+                <div class="logo-pagina">
+                    <img src="{{ url_for('static', filename='imagenes/icon.png') }}" id="logo" alt="Logo PetVet">
+                    <span>Petvet</span>
+                </div>
+                <button class="boton-cita" onclick="agendarCita()">
+                    <img src="{{ url_for('static', filename='recursos/icon/mas.svg') }}" alt="Agendar cita">
+                    <span>Agendar cita</span>
+                </button>
+            </div>
+
+            <nav class="navegacion">
+                <ul>
+                    <li>
+                        <a href="/home/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/inicio.svg') }}" alt="Inicio" class="icon">
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/citas/agendadas/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/citasAgendadas.svg') }}" alt="Citas Agendadas" class="icon">
+                            <span>Citas Agendadas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/guarderia/cita/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/guaderia-pendiente.svg') }}" alt="Citas de Guardería Pendientes" class="icon">
+                            <span>Citas Guardería</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/servicios/solicitados/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/servicios-solicitado.svg') }}" alt="Servicios Solicitados" class="icon">
+                            <span>Servicios Solicitados</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/guarderia/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/guarderia.svg') }}" alt="Guardería" class="icon">
+                            <span>Agendar Guardería</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/adopcion/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/adopcion.svg') }}" alt="Adopción" class="icon">
+                            <span>Adopción</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="linea"></div>
+
+            <div class="usuario">
+                <a href="#" onclick="abrirModal()">
+                    <img src="{{ url_for('static', filename='imagenes/user-.png') }}" alt="Usuario">
+                    <div class="info-usuario">
+                        <div class="nombre-email">
+                            <span class="nombre">Maria Lopez</span>
+                            <span class="email">marial@gmail.com</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="modal" id="modal">
+                <div class="modal-content">
+                    <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+                    <div class="perfil-container">
+                        <div class="perfil-header">
+                            <div class="perfil-foto-container">
+                                <img id="perfil-foto" src="{{ url_for('static', filename='default-profile.jpg') }}" alt="">
+                            </div>
+                            <div class="perfil-info">
+                                <h1>Maria Lopez</h1>
+                                <p>Email: <span id="email">marial@gmail.com</span></p>
+                                <p>Teléfono: <span id="telefono">809 456 7890</span></p>
+                                <p>Mascota: <span id="mascota">Perro</span></p>
+                            </div>
+                        </div>
+                        <div class="accion">
+                            <input type="file" id="subir-foto" accept="image/*" onchange="changeProfilePic()">
+                            <label for="subir-foto">Cambiar foto de perfil</label>
+                            <button class="boton-cs-perfil" id="cerrar-sesion">Cerrar Sesión</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="serviAdomi-alto">
+            <h1 class="h1">¡Por favor de llenar!</h1>
+            <p class="p">¡Completa este formulario antes de tu cita para el mejor cuidado de tu mascota! </p>
+        </div>
+        <form>
+            <div class="con-main-servicios">
+                <div class="formularios-servicios">
+                    <div class="formulario-servicios">
+                        <label class="label-servicios" for="nom">Nombre:</label>
+                        <input class="input-servicios" type="text" placeholder="Escriba su nombre" id="nom" autocomplete="off" autofocus required>
+                        <label class="label-servicios" for="correo">Correo:</label>
+                        <input class="input-servicios" type="email" placeholder="Escriba su email" id="correo" required>
+                        <label class="label-servicios" for="fecha">Fecha:</label>
+                        <input class="input-servicios" type="date" required id="fecha">
+                        <label class="label-servicios" for="direccion">Dirección:</label>
+                        <input class="input-servicios" type="text" id="direccion" placeholder="Escriba su dirección" required maxlength="200">
+                    </div>
+                    <div class="formulario-servicios">
+                        <label class="label-servicios" for="ape">Apellido:</label>
+                        <input class="input-servicios" type="text" placeholder="Escriba su Apellido" id="ape" autocomplete="off" required>
+                        <label class="label-servicios" for="Tanda">Tanda:</label>
+                        <select class="input-servicios" name="Tanda" id="Tanda" required>
+                            <option value="">-Elija una opción</option>
+                            <option value="Mañana">Mañana</option>
+                            <option value="Tarde">Tarde</option>
+                        </select>
+                        <label class="label-servicios" for="mascota">Mascota:</label>
+                        <select class="input-servicios" name="mascotas" id="mascota" required>
+                            <option value="perro">Perro</option>
+                            <option value="gatos">Gatos</option>
+                            <option value="roedores">Roedores</option>
+                            <option value="aves">Aves</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="con-servicios">
+                    <div class="productos-servis-derecho servicios-vacunas">
+                        <h2 class="h2-servicios">Vacunas</h2>
+                        <div id="formularios-productos">
+                            <div>
+                                <input type="checkbox" name="rabia" value="500">Vacuna contra la rabia - RD$500
+                            </div>
+                            <div>
+                                <input type="checkbox" name="parvovirus" value="500">Vacuna contra el parvovirus - RD$500
+                            </div>
+                            <div>
+                                <input type="checkbox" name="moquillo" value="500">Vacuna contra el moquillo - RD$500
+                            </div>
+                            <div>
+                                <input type="checkbox" name="polivalente" value="500">Vacuna refuerzo a polivalente - RD$500
+                            </div>
+                            <div>
+                                <input type="checkbox" name="Lyme" value="2000">Vacuna contra Lyme - RD$2,000
+                            </div>
+                        </div>
+                    </div>
+                    <div class="productos-servis-izquierdo servicios-vacunas">
+                        <h2 class="h2-servicios">Servicios</h2>
+                        <div>
+                            <div>
+                                <input type="checkbox" id="baño" name="baño" value="1500">Baño a domicilio - RD$1,500
+                            </div>
+                            <div>
+                                <input type="checkbox" id="paseos" name="servicios" value="1000">Paseos a mascotas - RD$1,000
+                            </div>
+                            <div>
+                                <input type="checkbox" id="corte" name="servicios" value="1000">Corte de uñas - RD$1,000
+                            </div>
+                            <div>
+                                <input type="checkbox" id="revisiones" name="servicios" value="2000">Revisiones físicas - RD$2,000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="Total">Total: <span id="totalPrecio">0</span></p>
+                <button class="pedir" type="submit" value="Pedir">Pedir</button>
+            </div>
+        </form>
+    </main>
+    <script src="{{ url_for('static', filename='js/calculo.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+</body>
+</html>

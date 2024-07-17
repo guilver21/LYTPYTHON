@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre los servicios excepcionales de PetVet, tu clínica veterinaria de confianza. Ofrecemos atención médica integral para tus mascotas, desde consultas generales y vacunas hasta cirugías especializadas. Nuestro equipo dedicado está comprometido con el bienestar animal, proporcionando cuidados personalizados y servicios de calidad. Confía en PetVet para mantener a tus mascotas felices y saludables en cada etapa de sus vidas.">
+    <title>Página de los Servicios</title>
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stilos_tiara.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <img src="{{ url_for('static', filename='recursos/icon/menu.svg') }}" alt="Menú">
+        </div>
+        <div class="barra-lateral">
+            <div>
+                <div class="logo-pagina">
+                    <img src="{{ url_for('static', filename='imagenes/icon.png') }}" id="logo" alt="Logo PetVet">
+                    <span>Petvet</span>
+                </div>
+                <button class="boton-cita" onclick="agendarCita()">
+                    <img src="{{ url_for('static', filename='recursos/icon/mas.svg') }}" alt="Agendar cita">
+                    <span>Agendar cita</span>
+                </button>
+            </div>
+
+            <nav class="navegacion">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="{{ url_for('static', filename='recursos/icon/inicio.svg') }}" alt="Inicio" class="icon">
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/citas/agendadas/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/citasAgendadas.svg') }}" alt="Citas Agendadas" class="icon">
+                            <span>Citas Agendadas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/guarderia/cita/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/guaderia-pendiente.svg') }}" alt="Citas de Guardería Pendientes" class="icon">
+                            <span>Citas Guardería</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/servicios/solicitados/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/servicios-solicitado.svg') }}" alt="Servicios Solicitados" class="icon">
+                            <span>Servicios Solicitados</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/guarderia/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/guarderia.svg') }}" alt="Guardería" class="icon">
+                            <span>Agendar Guardería</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/adopcion/usuario/">
+                            <img src="{{ url_for('static', filename='recursos/icon/adopcion.svg') }}" alt="Adopción" class="icon">
+                            <span>Adopción</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="linea"></div>
+
+            <div class="usuario">
+                <a href="#" onclick="abrirModal()">
+                    <img src="{{ url_for('static', filename='imagenes/user-.png') }}" alt="Usuario">
+                    <div class="info-usuario">
+                        <div class="nombre-email">
+                            <span class="nombre">Maria Lopez</span>
+                            <span class="email">marial@gmail.com</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="modal" id="modal">
+                <div class="modal-content">
+                    <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+                    <div class="perfil-container">
+                        <div class="perfil-header">
+                            <div class="perfil-foto-container">
+                                <img id="perfil-foto" src="{{ url_for('static', filename='imagenes/default-profile.jpg') }}" alt="">
+                            </div>
+                            <div class="perfil-info">
+                                <h1>Maria Lopez</h1>
+                                <p>Email: <span id="email">marial@gmail.com</span></p>
+                                <p>Teléfono: <span id="telefono">809 456 7890</span></p>
+                                <p>Mascota: <span id="mascota">Perro</span></p>
+                            </div>
+                        </div>
+                        <div class="accion">
+                            <input type="file" id="subir-foto" accept="image/*" onchange="changeProfilePic()">
+                            <label for="subir-foto">Cambiar foto de perfil</label>
+                            <button class="boton-cs-perfil" id="cerrar-sesion">Cerrar Sesión</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="servicio-adomicilio">
+            <h2>¡Disfruta de nuestros servicios a domicilio!</h2>
+            <p>Queremos hacer más conveniente para ti y tus mascotas el acceso a los cuidados veterinarios. No dudes en contactarnos para programar una cita en la comodidad de tu hogar.</p>
+            <div class="botones-de-cita">
+                <button class="cita-normal" onclick="agendarCita()">Agendar Cita</button>
+                <button class="cita-adomicilio" onclick="agendarCitaAdomicilio()">Servicio Adomicilio</button>
+            </div>
+        </section>
+        <section class="servicio-contenedor">
+            <article class="servicio-card">
+                <div class="icon-img">
+                    <img src="{{ url_for('static', filename='imagenes/bañera.png') }}" alt="Higiene para Animales">
+                </div>
+                <h2>Higiene para Mascotas</h2>
+                <p>En nuestro servicio de higiene, nos ocupamos de mantener a tus mascotas limpias y saludables.</p>
+                <div class="lista">
+                    <ul>
+                        <li><img src="{{ url_for('static', filename='imagenes/pata.png') }}" alt="Baño">Baño</li>
+                        <li><img src="{{ url_for('static', filename='imagenes/peluqueria.png') }}" alt="Corte de cabello y uñas">Peluquería y Corte de uñas</li>
+                        <li><img src="{{ url_for('static', filename='imagenes/diente.png') }}" alt="Chequeos dentales">Lavado dental</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="servicio-card">
+                <div class="icon-img">
+                    <img src="{{ url_for('static', filename='imagenes/hotel.png') }}" alt="Hotel para Animales">
+                </div>
+                <h2>Guardería y Hotelería</h2>
+                <p>Ofrecemos un espacio seguro y cómodo para que tus mascotas se queden mientras estás fuera.</p>
+                <div class="lista">
+                    <ul>
+                        <li><img src="{{ url_for('static', filename='imagenes/hospedaje.png') }}" alt="Hotel para mascotas">Hospedaje y cuidado de mascotas</li>
+                        <li><img src="{{ url_for('static', filename='imagenes/paseos.png') }}" alt="Paseos para tu mascota">Paseos diarios</li>
+                        <li><img src="{{ url_for('static', filename='imagenes/juego.png') }}" alt="Diversión para animales">Áreas de recreación</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="servicio-card">
+                <div class="icon-img">
+                    <img src="{{ url_for('static', filename='imagenes/chequeo.png') }}" alt="Chequeos para Animales">
+                </div>
+                <h2>Chequeo General</h2>
+                <p>Realizamos exámenes completos para garantizar la salud y bienestar de tus mascotas.</p>
+                <div class="lista">
+                    <ul>
+                        <li><img src="{{ url_for('static', filename='imagenes/laboratorio.png') }}" alt="Exámenes de laboratorio">Exámenes de laboratorio</li>
+                        <li><img src="{{ url_for('static', filename='imagenes/chequeo.png') }}" alt="Revisiones físicas">Revisiones físicas</li>
+                        <li><img src="{{ url_for('static', filename='imagenes/consultas.png') }}" alt="Atención médica">Consultas</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="servicio-card">
+                <div class="icon-img">
+                    <img src="{{ url_for('static', filename='imagenes/jeringa.png') }}" alt="Medicina para Animales">
+                </div>
+                <h2>Vacunación y Medicación</h2>
+                <p>Protege a tus mascotas contra enfermedades con nuestros servicios de vacunación y suministro de medicamentos.</p>
+                <div class="lista">
+                    <ul>
+                        <li><img src="{{ url_for('static', filename='imagenes/vacunas.png') }}" alt="Todo tipo de Vacunas">Vacunas básicas y refuerzos</li>
+                        <li><img src="{{ url_for('static', filename='imagenes/medicina.png') }}" alt="Medicamentos básicos">Medicamentos básicos</li>
+                        <li><img src="{{ url_for('static', filename='imagenes/spray.png') }}" alt="Tratamientos contra parásitos">Tratamientos contra parásitos</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+</body>
+
+</html>
