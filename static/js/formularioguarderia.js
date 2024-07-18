@@ -1,5 +1,5 @@
 // Este bloque de código se ejecuta cuando se envía el formulario con la clase 'citaForm'
-document.querySelector('.citaForm').addEventListener('submit', function(e) {
+document.querySelector('.formulario').addEventListener('submit', function(e) {
     // Prevenir el comportamiento por defecto de envío del formulario
     e.preventDefault();
     
@@ -34,5 +34,5 @@ document.querySelector('.citaForm').addEventListener('submit', function(e) {
 
 // Función para redirigir a la página 'u_citas-agendadas.html' al hacer clic en un botón
 function verCitas() {
-    window.location.href = '/citas/agendadas/usuario/';
+    window.location.href = '/guarderia/cita/usuario/';
 }
