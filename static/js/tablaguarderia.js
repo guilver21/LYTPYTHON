@@ -6,9 +6,9 @@
             citas.forEach(cita => {
                 const row = tbody.insertRow();
                 row.innerHTML = `
-                    <td>${cita.fecha}</td>
-                    <td>${cita.tanda}</td>
-                    <td>${cita.servicio}</td>
+                    <td>${cita.nombre}</td>
+                    <td>${cita.desde}</td>
+                    <td>${cita.hasta}</td>
                     <td>${cita.mascota}</td>
                     <td>
                         <button onclick="eliminarCita(${cita.id})">Eliminar</button>
@@ -25,7 +25,7 @@
         }
 
         function volverAlFormulario() {
-            window.location.href = '/agendarcitas/usuario/';
+            window.location.href = '/guarderia/usuario/';
         }
 
         window.addEventListener('load', cargarCitas);

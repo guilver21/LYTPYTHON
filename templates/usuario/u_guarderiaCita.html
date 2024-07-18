@@ -107,7 +107,7 @@
 
     <main class="con-agendadas">
         <div class="con-tabla">
-            <table class="tablas-agendadas">
+            <table class="tablas-agendadas" id="citasTable">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -117,55 +117,17 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="blanco">
-                        <td>Maria Perez</td>
-                        <td>04/06/2024</td>
-                        <td>06/06/2025</td>
-                        <td>Perro</td>
-                        <td>
-                            <!-- <a href="u_editarCitaGuarderia.html" class="verde">Editar Citas</a> -->
-                            <a href="#" class="roja">Eliminar cita</a>
-                        </td>
-                    </tr>
-                    <tr class="gris">
-                        <td>Maria Perez</td>
-                        <td>04/06/2024</td>
-                        <td>06/06/2025</td>
-                        <td>Perro</td>
-                        <td>
-                            <!-- <a href="u_editarCitaGuarderia.html" class="verde">Editar Citas</a> -->
-                            <a href="#" class="roja">Eliminar cita</a>
-                        </td>
-                    </tr>
-                    <tr class="blanco">
-                        <td>Maria Perez</td>
-                        <td>04/06/2024</td>
-                        <td>06/06/2025</td>
-                        <td>Perro</td>
-                        <td>
-                            <!-- <a href="u_editarCitaGuarderia.html" class="verde">Editar Citas</a> -->
-                            <a href="#" class="roja">Eliminar cita</a>
-                        </td>
-                    </tr>
-                    <tr class="gris">
-                        <td>Maria Perez</td>
-                        <td>04/06/2024</td>
-                        <td>06/06/2025</td>
-                        <td>Perro</td>
-                        <td>
-                            <!-- <a href="u_editarCitaGuarderia.html" class="verde">Editar Citas</a> -->
-                            <a href="#" class="roja">Eliminar cita</a>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
         <div class="agen">
-            <a href="../usuario/agendarCita.html">Nueva cita</a>
+            <a href="../usuario/agendarCita.html" onclick="volverAlFormulario()">Nueva cita</a>
         </div>
     </main>
 
     <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tablaguarderia.js') }}"></script>
+   
+
 </body>
 </html>

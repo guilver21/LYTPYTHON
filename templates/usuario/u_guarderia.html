@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bienvenido a PetVet, tu veterinaria de confianza dedicada al cuidado integral de tu mascota.">
     <title>Guarderia</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link rel="icon" href="{{ url_for('static', filename='imagenes/icon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/estilosL.css') }}">
 </head>
@@ -117,7 +119,7 @@
                     <p class="p2">¡Completa este formulario antes de tu cita para el mejor cuidado de tu mascota!</p>
                 </div>
             </div>
-            <form class="formulario">
+            <form class="formulario ">
                 <div class="form-1">
                     <label for="nombre">Nombre:</label><br>
                     <input type="text" id="nombre" placeholder="Nombre" name="nombre" class="form-input" required><br>
@@ -163,10 +165,14 @@
 
                 <div class="boton">
                     <button type="submit" class="ancho">Enviar</button>
+                    <button type="button" class="anchoE" onclick="verCitas()">Ver Citas</button>
+
                 </div>
             </form>
 
             <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/formularioguarderia.js') }}"></script>
+
         </main>
     </div>
 </body>
