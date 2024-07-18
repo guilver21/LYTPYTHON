@@ -108,45 +108,28 @@
 
     <main class="con-agendadas">
         <div class="con-tabla">
-            <table class="tablas-agendadas">
+             <table id="citasTable">
                 <thead>
                     <tr>
-                        <th>Fecha</th>
+                        <th>Nombre</th>
                         <th>Tanda</th>
                         <th>Precio</th>
-                        <th>Dirección</th>
+                        <th>Direccion</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="blanco">
-                        <td>04/06/2024</td>
-                        <td>Tarde</td>
-                        <td>3,000</td>
-                        <td>Los prados calle 17 casa numero 10 santiago de los caballeros</td>
-                    </tr>
-                    <tr class="gris">
-                        <td>04/06/2024</td>
-                        <td>Tarde</td>
-                        <td>3,000</td>
-                        <td>Los prados calle 17 casa numero 10 santiago de los caballeros</td>
-                    </tr>
-                    <tr class="blanco">
-                        <td>04/06/2024</td>
-                        <td>Tarde</td>
-                        <td>3,000</td>
-                        <td>Los prados calle 17 casa numero 10 santiago de los caballeros</td>
-                    </tr>
-                    <tr class="gris">
-                        <td>04/06/2024</td>
-                        <td>Tarde</td>
-                        <td>3,000</td>
-                        <td>Los prados calle 17 casa numero 10 santiago de los caballeros</td>
-                    </tr>
-                </tbody>
+                <tbody></tbody>
             </table>
+           
+           
+        </div>
+           <div class="agen">
+            <button onclick="volverAlFormulario()">Nueva cita</button>
         </div>
     </main>
 
     <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tablaservicio.js') }}"></script>
+
 </body>
 </html>

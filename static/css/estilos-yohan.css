@@ -430,13 +430,14 @@ a{
 
     
 } 
-.agen a{
+.agen button{
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     /* background-color: #193A6A; */
     font-size: clamp(1.10em, 2vw,1em );
+    border: none;
     height: 50px;
     border-radius: 5px;
     width: 15%;

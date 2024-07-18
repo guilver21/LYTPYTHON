@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios a domicilio</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos-yohan.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='imagenes/icon.png') }}">
 </head>
@@ -109,26 +111,26 @@
     <main>
         <div class="serviAdomi-alto">
             <h1 class="h1">¡Por favor de llenar!</h1>
-            <p class="p">¡Completa este formulario antes de tu cita para el mejor cuidado de tu mascota! </p>
+            <p class="p">¡Completa este formulario para que podamos cumplir con tu servicio a domicilio! </p>
         </div>
-        <form>
+        <form class="formulario ">
             <div class="con-main-servicios">
                 <div class="formularios-servicios">
                     <div class="formulario-servicios">
-                        <label class="label-servicios" for="nom">Nombre:</label>
-                        <input class="input-servicios" type="text" placeholder="Escriba su nombre" id="nom" autocomplete="off" autofocus required>
+                        <label class="label-servicios" for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" placeholder="Nombre" name="nombre" class="form-input" required>
                         <label class="label-servicios" for="correo">Correo:</label>
                         <input class="input-servicios" type="email" placeholder="Escriba su email" id="correo" required>
                         <label class="label-servicios" for="fecha">Fecha:</label>
                         <input class="input-servicios" type="date" required id="fecha">
                         <label class="label-servicios" for="direccion">Dirección:</label>
-                        <input class="input-servicios" type="text" id="direccion" placeholder="Escriba su dirección" required maxlength="200">
+                        <input class="input-servicios" type="text" id="direccion" name="direccion" placeholder="Escriba su dirección" required maxlength="200">
                     </div>
                     <div class="formulario-servicios">
                         <label class="label-servicios" for="ape">Apellido:</label>
                         <input class="input-servicios" type="text" placeholder="Escriba su Apellido" id="ape" autocomplete="off" required>
-                        <label class="label-servicios" for="Tanda">Tanda:</label>
-                        <select class="input-servicios" name="Tanda" id="Tanda" required>
+                        <label class="label-servicios" for="tanda">Tanda:</label>
+                        <select class="input-servicios" name="tanda" id="tanda" required>
                             <option value="">-Elija una opción</option>
                             <option value="Mañana">Mañana</option>
                             <option value="Tarde">Tarde</option>
@@ -182,12 +184,16 @@
                         </div>
                     </div>
                 </div>
-                <p class="Total">Total: <span id="totalPrecio">0</span></p>
+                <p class="Total">Total: <span id="totalPrecio" name="totalPrecio">0</span></p>
                 <button class="pedir" type="submit" value="Pedir">Pedir</button>
+                <button  class="pedir" type="button" class="anchoE" onclick="verCitas()">Ver Citas</button>
+
             </div>
         </form>
     </main>
     <script src="{{ url_for('static', filename='js/calculo.js') }}"></script>
     <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/formularioservicio.js') }}"></script>
+
 </body>
 </html>
