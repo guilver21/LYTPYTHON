@@ -8,7 +8,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # crear una llave secreta
-app.secret_key = "dicresoft"
+app.secret_key = "lytpython"
 
 
 # crear una conexion a la base de datos 
