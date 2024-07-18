@@ -5,16 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="Aqui podra ver las citas que tiene con sus clientes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Citas pendientes</title>
-    <link rel="icon" href="../imagenes/icon.png">
-     <link rel="stylesheet" href="../css/stilos_tiara.css">
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stilos_tiara.css') }}">
 </head>
 <!--  -->
 <body class="body-admin">
       <header class="alto-admi">
       <div >
-      <figure> <img src="../imagenes/logo.png" class="logo" alt="Logo petvet" title="Logo"></figure>
+      <figure> <img src="{{ url_for('static', filename='imagenes/logo.png') }}" class="logo" alt="Logo petvet" title="Logo"></figure>
       </div>
 
       <div class="bajo-header">
@@ -23,12 +23,12 @@
       </div>
 
       <div class="con-botones">
-      <a href="../admin/a_administrador.html">
-      <figure class="icons"> <img class="botones"  src="../imagenes/a-home.png" alt="Inicio" title="Inicio"></figure>
+      <a href="{{ url_for('admin.administrador') }}">
+      <figure class="icons"> <img class="botones"  src="{{ url_for('static', filename='imagenes/a-home.png') }}" alt="Inicio" title="Inicio"></figure>
       </a>
     
       <a href="#">
-      <figure class="icons"><img class="botones" src="../imagenes/a-saalir.png" alt="Cerrar Sesion" title="Cerrar Sesion"></figure>
+      <figure class="icons"><img class="botones" src="{{ url_for('static', filename='imagenes/a-saalir.png') }}" alt="Cerrar Sesion" title="Cerrar Sesion"></figure>
       </a>
       </div>
       </div>
@@ -43,59 +43,41 @@
                 <th>Tanda</th>
                 <th>Ver más</th>
                 <th>Acciones</th>
-
             </tr>
             <tr>
                 <td>1</td>
                 <td>Maria perez</td>
                 <td>04/06/2024</td>
                 <td>Tarde</td>
-                <td><a href="../admin/a.despliegue-citas.html" class="ver-mas">Ver mas</a></td>
+                <td><a href="{{ url_for('admin.despliegue_citas') }}" class="ver-mas">Ver mas</a></td>
                 <td class="eliminar-a">Eliminar cita</td>
-
-
-
-
             </tr>
               <tr class="gris">
                 <td>2</td>
                 <td>Maria perez</td>
                 <td>04/06/2024</td>
                 <td>Tarde</td>
-                <td><a href="../admin/a.despliegue-citas.html" class="ver-mas">Ver mas</a></td>
+                <td><a href="{{ url_for('admin.despliegue_citas') }}" class="ver-mas">Ver mas</a></td>
                 <td class="eliminar-a">Eliminar cita</td>
-
-
-
-
             </tr>
               <tr >
                 <td>3</td>
                 <td>Maria perez</td>
                 <td>07/06/2024</td>
                 <td>Mañana</td>
-                <td><a href="../admin/a.despliegue-citas.html" class="ver-mas">Ver mas</a></td>
+                <td><a href="{{ url_for('admin.despliegue_citas') }}" class="ver-mas">Ver mas</a></td>
                 <td class="eliminar-a">Eliminar cita</td>
-
-
-
-
             </tr>
               <tr class="gris">
                 <td>4</td>
                 <td>Maria perez</td>
                 <td>08/06/2024</td>
                 <td>Mañana</td>
-                <td><a href="../admin/a.despliegue-citas.html" class="ver-mas">Ver mas</a></td>
+                <td><a href="{{ url_for('admin.despliegue_citas') }}" class="ver-mas">Ver mas</a></td>
                 <td class="eliminar-a">Eliminar cita</td>
-
-
-
-
             </tr>
             </thead>
         </table>
     </main>
-    
 </body>
 </html>

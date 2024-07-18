@@ -58,16 +58,11 @@ function agendarCita () {
     window.location.href = "/agendarcitas/usuario/";
 }
 
-// function irAPerfil() {
-//     window.location.href = "../usuario/u.perfil.html";
-// }
-
 function agendarCitaAdomicilio () {
     window.location.href = "/servicios/adomicilio/usuario/"
 }
 
-
-
+ 
 // Función para abrir el modal
 function abrirModal() {
     var modal = document.getElementById('modal');

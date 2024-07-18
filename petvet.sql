@@ -25,21 +25,9 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `admin`
---
-
-CREATE TABLE `admin` (
-  `id_admin` int(50) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `contraseña` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `rol` enum('admin','','','') COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `admin-adomicilio`
 --
+
 
 CREATE TABLE `admin-adomicilio` (
   `id_adminAdomicilio` int(50) NOT NULL,
@@ -189,11 +177,6 @@ CREATE TABLE `usuarios` (
 -- Índices para tablas volcadas
 --
 
---
--- Indices de la tabla `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indices de la tabla `admin-adomicilio`
@@ -247,11 +230,6 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
---
--- AUTO_INCREMENT de la tabla `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id_admin` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `admin-adomicilio`
