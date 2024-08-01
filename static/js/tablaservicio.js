@@ -6,11 +6,10 @@
             citas.forEach(cita => {
                 const row = tbody.insertRow();
                 row.innerHTML = `
-                    <td>${cita.fecha}</td>
+                    <td>${cita.nombre}</td>
                     <td>${cita.tanda}</td>
                     <td>${cita.totalPrecio}</td>
                     <td>${cita.direccion}</td>
-                    <td>${cita.mascota}</td>
 
                     <td>
                         <button onclick="eliminarCita(${cita.id})">Eliminar</button>
