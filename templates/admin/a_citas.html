@@ -23,16 +23,17 @@
       </div>
 
       <div class="con-botones">
-      <a href="{{ url_for('admin.administrador') }}">
+      <a href="/admin/">
       <figure class="icons"> <img class="botones"  src="{{ url_for('static', filename='imagenes/a-home.png') }}" alt="Inicio" title="Inicio"></figure>
       </a>
     
-      <a href="#">
+      <a href="/">
       <figure class="icons"><img class="botones" src="{{ url_for('static', filename='imagenes/a-saalir.png') }}" alt="Cerrar Sesion" title="Cerrar Sesion"></figure>
       </a>
       </div>
       </div>
     </header>
+    
     <main class="main-agen-admin citas-ad">
         <table>
             <thead>
@@ -49,7 +50,7 @@
                 <td>Maria perez</td>
                 <td>04/06/2024</td>
                 <td>Tarde</td>
-                <td><a href="{{ url_for('admin.despliegue_citas') }}" class="ver-mas">Ver mas</a></td>
+                <td><a href="/admin/despliegue/citas/" class="ver-mas">Ver mas</a></td>
                 <td class="eliminar-a">Eliminar cita</td>
             </tr>
               <tr class="gris">
@@ -57,7 +58,7 @@
                 <td>Maria perez</td>
                 <td>04/06/2024</td>
                 <td>Tarde</td>
-                <td><a href="{{ url_for('admin.despliegue_citas') }}" class="ver-mas">Ver mas</a></td>
+                <td><a href="/admin/despliegue/citas/" class="ver-mas">Ver mas</a></td>
                 <td class="eliminar-a">Eliminar cita</td>
             </tr>
               <tr >
@@ -65,7 +66,7 @@
                 <td>Maria perez</td>
                 <td>07/06/2024</td>
                 <td>Mañana</td>
-                <td><a href="{{ url_for('admin.despliegue_citas') }}" class="ver-mas">Ver mas</a></td>
+                <td><a href="/admin/despliegue/citas/" class="ver-mas">Ver mas</a></td>
                 <td class="eliminar-a">Eliminar cita</td>
             </tr>
               <tr class="gris">
@@ -73,7 +74,7 @@
                 <td>Maria perez</td>
                 <td>08/06/2024</td>
                 <td>Mañana</td>
-                <td><a href="{{ url_for('admin.despliegue_citas') }}" class="ver-mas">Ver mas</a></td>
+                <td><a href="/admin/despliegue/citas/" class="ver-mas">Ver mas</a></td>
                 <td class="eliminar-a">Eliminar cita</td>
             </tr>
             </thead>

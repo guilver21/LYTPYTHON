@@ -74,5 +74,42 @@ def u_servicio_adomicilio():
     return render_template('usuario/u_servicioAdomicialio.html')
 
 
+# Admin
+
+@app.route('/admin/')
+def a_administrador():
+    return render_template('admin/a_administrador.html')
+
+@app.route('/admin/adopcion/')
+def a_adopcion():
+    return render_template('admin/a_adopcion.html')
+
+
+@app.route('/admin/citas/agendada/')
+def a_agendada_citas():
+    return render_template('admin/a_citas.html')
+
+@app.route('/admin/servicios/')
+def a_servicios():
+    return render_template('admin/a_sevicio.html')
+
+@app.route('/admin/agenda/citas/')
+def a_agenda_citas():
+    return render_template('admin/a_AgendadasGuarderia.html')  
+
+@app.route('/admin/despliegue/guarderia/')
+def  a_despliegueGuarderia():
+    return render_template('admin/a_despliegue-Guarderia.html')
+
+@app.route('/admin/despliegue/citas/')
+def  a_despliegueCitas():
+    return render_template('admin/a_despliegue-citas.html')
+
+@app.route('/admin/despliegue/servicios/')
+def  a_despliegueServicios():
+    return render_template('admin/a_despliegue-servicios.html')
+
+
+     
 if __name__ == '__main__':
     app.run(debug=True)

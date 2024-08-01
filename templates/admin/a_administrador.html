@@ -21,11 +21,11 @@
         </div>
 
         <div class="con-botones">
-            <a href="{{ url_for('home') }}">
+            <a href="/admin/">
                 <figure class="icons"><img class="botones" src="{{ url_for('static', filename='imagenes/a-home.png') }}" alt="Inicio" title="Inicio"></figure>
             </a>
 
-            <a href="{{ url_for('logout') }}">
+            <a href="/">
                 <figure class="icons"><img class="botones" src="{{ url_for('static', filename='imagenes/a-saalir.png') }}" alt="Cerrar Sesion" title="Cerrar Sesion"></figure>
             </a>
         </div>
@@ -34,28 +34,28 @@
 
 <main class="galeria">
     <div class="admin-cuerpo">
-        <a href="{{ url_for('citas_agendadas') }}">
+        <a href="/admin/citas/agendada/">
             <figure><img src="{{ url_for('static', filename='imagenes/admi-agenda.png') }}" alt="Agenda de Cita" class="imagen-admin" title="Agenda de citas"></figure>
             <h3 class="h3-admi">Citas pendientes</h3>
         </a>
     </div>
 
     <div class="admin-cuerpo">
-         <a href="{{ url_for('servicios') }}">
+         <a href="/admin/servicios/">
             <figure><img src="{{ url_for('static', filename='imagenes/servicios.jpg') }}" alt="Servicios" class="imagen-admin" title="Servicios"></figure>
             <h3 class="h3-admi h3-modida">A Domicilio </h3>
         </a>
     </div>
 
     <div class="admin-cuerpo">
-        <a href="{{ url_for('agendadas_guarderia') }}">
+        <a href="/admin/agenda/citas/">
             <figure><img src="{{ url_for('static', filename='imagenes/1.jpg') }}" alt="Guardería" class="imagen-admin" title="Guardería"></figure>
             <h3 class="h3-admi">Guardería</h3>
         </a>
     </div>
                                                                                  
     <div class="admin-cuerpo">
-        <a href="{{ url_for('adopcion') }}">
+        <a href="/admin/adopcion/">
             <figure><img src="{{ url_for('static', filename='imagenes/adopcion.png') }}" alt="Adopción" class="imagen-admin" title="Adopción"></figure>
             <h3 class="h3-admi">Adopción</h3>
         </a>
