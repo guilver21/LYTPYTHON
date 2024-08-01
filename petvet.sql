@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-07-2024 a las 22:17:57
+-- Tiempo de generación: 27-06-2024 a las 23:46:08
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.13
 
@@ -28,13 +28,52 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `admin`
 --
 
-CREATE TABLE `admin` (
-  `id-admin` int(50) NOT NULL,
-  `id-domicilio` int(50) NOT NULL,
-  `id-guarderia` int(50) NOT NULL,
-  `id-citas` int(50) NOT NULL,
-  `id-adopcion` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `admin-adomicilio` (
+  `id_adminAdomicilio` int(50) NOT NULL,
+  `id_usurio` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `id_adomicilio` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `admin-cita`
+--
+
+CREATE TABLE `admin-cita` (
+  `id_adminCita` int(50) NOT NULL,
+  `id_usurio` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `id_cita` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `admin-guarderia`
+--
+
+CREATE TABLE `admin-guarderia` (
+  `id_adminGuarderia` int(50) NOT NULL,
+  `id_usurio` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `id_guarderia` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `adomicilio`
+--
+
+CREATE TABLE `adomicilio` (
+  `id_adomicilio` int(50) NOT NULL DEFAULT '0',
+  `id_usurio` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `fecha` date NOT NULL,
+  `tanda` date NOT NULL,
+  `id_mascota` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `id_servicio` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `total` decimal(60,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -43,12 +82,11 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `adopcion` (
-  `id-adopcion` int(50) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(120) COLLATE utf8_spanish_ci NOT NULL,
-  `edad` float NOT NULL,
-  `sexo` varchar(15) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_adopcion` int(50) NOT NULL,
+  `nom-animal` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `mascota` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `animal-descripcion` text COLLATE utf32_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -57,31 +95,14 @@ CREATE TABLE `adopcion` (
 --
 
 CREATE TABLE `citas` (
-  `id-citas` int(50) NOT NULL,
-  `id-usuario` int(50) NOT NULL,
+  `id_cita` int(50) NOT NULL,
+  `id_usurio` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
   `fecha` date NOT NULL,
-  `id-mascota` int(50) NOT NULL,
-  `tanda` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `id-servicio` int(50) NOT NULL,
-  `descripcion` varchar(200) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `domicilio`
---
-
-CREATE TABLE `domicilio` (
-  `id-domicilio` int(50) NOT NULL,
-  `id-usuario` int(50) NOT NULL,
-  `fecha` date NOT NULL,
-  `direccion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `tanda` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `id-mascota` int(50) NOT NULL,
-  `id-vacuna` int(50) NOT NULL,
-  `id-servicio` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `tanda` date NOT NULL,
+  `id_mascota` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `id_servicio` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `descripcion` text COLLATE utf32_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -90,80 +111,67 @@ CREATE TABLE `domicilio` (
 --
 
 CREATE TABLE `guarderia` (
-  `id-guaderia` int(50) NOT NULL,
-  `id-usuario` int(50) NOT NULL,
-  `id-servicio` int(50) NOT NULL,
-  `desde` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `hasta` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `id-mascota` int(50) NOT NULL,
-  `descripcion` varchar(200) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_guarderia` int(50) NOT NULL,
+  `id_usurio` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `fecha-desde` date NOT NULL,
+  `fecha-hasta` date NOT NULL,
+  `id_mascota` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `descripcion` text COLLATE utf32_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mascota`
+-- Estructura de tabla para la tabla `mascotas`
 --
 
-CREATE TABLE `mascota` (
-  `id-mascota` int(50) NOT NULL,
-  `tipo-mascota` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+CREATE TABLE `mascotas` (
+  `id_mascota` int(50) NOT NULL,
+  `macota` varchar(50) COLLATE utf32_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rol`
+-- Estructura de tabla para la tabla `roles`
 --
 
-CREATE TABLE `rol` (
-  `id-rol` int(50) NOT NULL,
-  `id-usuario` int(50) NOT NULL,
-  `id-admin` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+CREATE TABLE `roles` (
+  `id_rol` int(50) NOT NULL,
+  `id_usurio` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `id_admin` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `servicio`
+-- Estructura de tabla para la tabla `servicios`
 --
 
-CREATE TABLE `servicio` (
-  `id-servicios` int(50) NOT NULL,
-  `servicio` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `precio` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+CREATE TABLE `servicios` (
+  `id_servicio` int(50) NOT NULL,
+  `nom-servicio` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `precio-servicio` decimal(50,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuario` (
-  `id-usuario` int(50) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `apellido` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `fecha-nacimiento` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `sexo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `id-mascota` int(50) NOT NULL,
-  `correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `contraña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `foto-perfil` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `vacuna`
---
-
-CREATE TABLE `vacuna` (
-  `id-vacuna` int(50) NOT NULL,
-  `vacuna` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `precio` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+CREATE TABLE `usuarios` (
+  `id_usuario` int(50) NOT NULL,
+  `nombre` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `apellido` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `telefono` char(15) COLLATE utf32_spanish2_ci NOT NULL,
+  `correo` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `sexo` varchar(20) COLLATE utf32_spanish2_ci NOT NULL,
+  `fecha nacimiento` varchar(30) COLLATE utf32_spanish2_ci NOT NULL,
+  `id_mascota` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `contraseña` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `rol` enum('usuario','','','') COLLATE utf32_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
 
 --
 -- Índices para tablas volcadas
@@ -172,12 +180,20 @@ CREATE TABLE `vacuna` (
 --
 -- Indices de la tabla `admin`
 --
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id-admin`),
-  ADD KEY `id-domicilio` (`id-domicilio`),
-  ADD KEY `id-guarderia` (`id-guarderia`),
-  ADD KEY `id-citas` (`id-citas`),
-  ADD KEY `id-adopcion` (`id-adopcion`);
+ALTER TABLE `admin-adomicilio`
+  ADD PRIMARY KEY (`id_adminAdomicilio`);
+
+--
+-- Indices de la tabla `admin-cita`
+--
+ALTER TABLE `admin-cita`
+  ADD PRIMARY KEY (`id_adminCita`);
+
+--
+-- Indices de la tabla `admin-guarderia`
+--
+ALTER TABLE `admin-guarderia`
+  ADD PRIMARY KEY (`id_adminGuarderia`);
 
 --
 -- Indices de la tabla `adopcion`
@@ -189,60 +205,25 @@ ALTER TABLE `adopcion`
 -- Indices de la tabla `citas`
 --
 ALTER TABLE `citas`
-  ADD PRIMARY KEY (`id-citas`),
-  ADD KEY `id-usuario` (`id-usuario`),
-  ADD KEY `id-mascota` (`id-mascota`),
-  ADD KEY `id-servicio` (`id-servicio`);
+  ADD PRIMARY KEY (`id_cita`);
 
 --
--- Indices de la tabla `domicilio`
+-- Indices de la tabla `mascotas`
 --
-ALTER TABLE `domicilio`
-  ADD PRIMARY KEY (`id-domicilio`),
-  ADD KEY `id-servicio` (`id-servicio`),
-  ADD KEY `id-vacuna` (`id-vacuna`),
-  ADD KEY `id-mascota` (`id-mascota`),
-  ADD KEY `id-usuario` (`id-usuario`);
+ALTER TABLE `mascotas`
+  ADD PRIMARY KEY (`id_mascota`);
 
 --
--- Indices de la tabla `guarderia`
+-- Indices de la tabla `servicios`
 --
-ALTER TABLE `guarderia`
-  ADD PRIMARY KEY (`id-guaderia`),
-  ADD KEY `id-mascota` (`id-mascota`),
-  ADD KEY `id-servicio` (`id-servicio`),
-  ADD KEY `id-usuario` (`id-usuario`);
-
---
--- Indices de la tabla `mascota`
---
-ALTER TABLE `mascota`
-  ADD PRIMARY KEY (`id-mascota`);
-
---
--- Indices de la tabla `rol`
---
-ALTER TABLE `rol`
-  ADD PRIMARY KEY (`id-rol`);
-
---
--- Indices de la tabla `servicio`
---
-ALTER TABLE `servicio`
-  ADD PRIMARY KEY (`id-servicios`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id-usuario`),
-  ADD KEY `id-mascota` (`id-mascota`);
+ALTER TABLE `servicios`
+  ADD PRIMARY KEY (`id_servicio`);
 
 --
 -- Indices de la tabla `vacuna`
 --
-ALTER TABLE `vacuna`
-  ADD PRIMARY KEY (`id-vacuna`);
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -251,8 +232,20 @@ ALTER TABLE `vacuna`
 --
 -- AUTO_INCREMENT de la tabla `admin`
 --
-ALTER TABLE `admin`
-  MODIFY `id-admin` int(50) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `admin-adomicilio`
+  MODIFY `id_adminAdomicilio` int(50) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `admin-cita`
+--
+ALTER TABLE `admin-cita`
+  MODIFY `id_adminCita` int(50) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `admin-guarderia`
+--
+ALTER TABLE `admin-guarderia`
+  MODIFY `id_adminGuarderia` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `adopcion`
@@ -264,93 +257,25 @@ ALTER TABLE `adopcion`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id-citas` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cita` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `domicilio`
+-- AUTO_INCREMENT de la tabla `mascotas`
 --
-ALTER TABLE `domicilio`
-  MODIFY `id-domicilio` int(50) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `mascotas`
+  MODIFY `id_mascota` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `guarderia`
+-- AUTO_INCREMENT de la tabla `servicios`
 --
-ALTER TABLE `guarderia`
-  MODIFY `id-guaderia` int(50) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `servicios`
+  MODIFY `id_servicio` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `mascota`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
-ALTER TABLE `mascota`
-  MODIFY `id-mascota` int(50) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `rol`
---
-ALTER TABLE `rol`
-  MODIFY `id-rol` int(50) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `servicio`
---
-ALTER TABLE `servicio`
-  MODIFY `id-servicios` int(50) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id-usuario` int(50) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `vacuna`
---
-ALTER TABLE `vacuna`
-  MODIFY `id-vacuna` int(50) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`id-citas`) REFERENCES `citas` (`id-citas`),
-  ADD CONSTRAINT `admin_ibfk_2` FOREIGN KEY (`id-domicilio`) REFERENCES `domicilio` (`id-domicilio`),
-  ADD CONSTRAINT `admin_ibfk_3` FOREIGN KEY (`id-guarderia`) REFERENCES `guarderia` (`id-guaderia`),
-  ADD CONSTRAINT `admin_ibfk_4` FOREIGN KEY (`id-adopcion`) REFERENCES `adopcion` (`id-adopcion`);
-
---
--- Filtros para la tabla `citas`
---
-ALTER TABLE `citas`
-  ADD CONSTRAINT `citas_ibfk_2` FOREIGN KEY (`id-servicio`) REFERENCES `servicio` (`id-servicios`),
-  ADD CONSTRAINT `citas_ibfk_3` FOREIGN KEY (`id-usuario`) REFERENCES `usuario` (`id-usuario`),
-  ADD CONSTRAINT `citas_ibfk_4` FOREIGN KEY (`id-mascota`) REFERENCES `mascota` (`id-mascota`);
-
---
--- Filtros para la tabla `domicilio`
---
-ALTER TABLE `domicilio`
-  ADD CONSTRAINT `domicilio_ibfk_1` FOREIGN KEY (`id-usuario`) REFERENCES `usuario` (`id-usuario`),
-  ADD CONSTRAINT `domicilio_ibfk_2` FOREIGN KEY (`id-vacuna`) REFERENCES `vacuna` (`id-vacuna`),
-  ADD CONSTRAINT `domicilio_ibfk_3` FOREIGN KEY (`id-servicio`) REFERENCES `servicio` (`id-servicios`),
-  ADD CONSTRAINT `domicilio_ibfk_4` FOREIGN KEY (`id-mascota`) REFERENCES `mascota` (`id-mascota`);
-
---
--- Filtros para la tabla `guarderia`
---
-ALTER TABLE `guarderia`
-  ADD CONSTRAINT `guarderia_ibfk_1` FOREIGN KEY (`id-usuario`) REFERENCES `usuario` (`id-usuario`),
-  ADD CONSTRAINT `guarderia_ibfk_2` FOREIGN KEY (`id-servicio`) REFERENCES `servicio` (`id-servicios`),
-  ADD CONSTRAINT `guarderia_ibfk_3` FOREIGN KEY (`id-mascota`) REFERENCES `mascota` (`id-mascota`);
-
---
--- Filtros para la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id-mascota`) REFERENCES `mascota` (`id-mascota`);
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(50) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
