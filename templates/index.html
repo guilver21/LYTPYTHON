@@ -1,49 +1,36 @@
-<!-- HECHO POR LAURA -->
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión | Petvet</title>
     <link rel="icon" href="{{ url_for('static', filename='imagenes/icon.png') }}">
-    <link rel="icon" href="{{ url_for('static', filename='imagenes/perrito.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
-
 <body>
     <div class="contenedor-formulario contenedor">
-        <div class="imagen-fomulario">
-            
-        </div>
-
-        <form class="formulario" > 
+        <div class="imagen-fomulario"></div>
+        <form class="formulario" method="POST" action="{{ url_for('login') }}">
             <div class="input">
                 <img class="logo" src="{{ url_for('static', filename='imagenes/logo.png') }}" alt="Logo">
-                <label for="usuario">Usuario :</label>
+                <label for="correo-sesion">Usuario :</label>
                 <br>
-                <input placeholder="Ingresa tu nombre" type="text" id="usuario" name="usuario">
+                <input placeholder="Ingresa tu correo" type="email" id="correo-sesion" name="correo-sesion">
             </div>
-
             <div class="input">
-                <label for="contraseña">Password:</label>
+                <label for="pass-sesion">Password:</label>
                 <br>
-                <input placeholder="Ingresa tu contraseña" type="password" id="contraseña" name="contraseña">
+                <input placeholder="Ingresa tu contraseña" type="password" id="pass-sesion" name="pass-sesion">
             </div>
-
-           <div class="iniciarSeccion" onclick="guardar()"> 
-            <a onclick="guardar()">INCIAR SESION</a>
-          </div>
-
+            <div class="iniciarSeccion"> 
+                <button type="submit">INICIAR SESIÓN</button>
+            </div>
             <div class="password-olvidada">
                 <a href="{{ url_for('u_registrousuario') }}">¿Aún no tienes cuenta?</a>
             </div>
         </form>
     </div>
-
     <script src="{{ url_for('static', filename='js/javascript-Laura.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
-
 </html>

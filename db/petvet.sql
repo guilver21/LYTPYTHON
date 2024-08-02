@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-07-2024 a las 19:46:34
+-- Tiempo de generación: 02-08-2024 a las 20:44:00
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.13
 
@@ -30,6 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id_admin` int(50) NOT NULL,
+  `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `contraseña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `id_domicilio` int(50) NOT NULL,
   `id_citas` int(50) NOT NULL,
   `id_guarderia` int(50) NOT NULL,
@@ -149,7 +151,8 @@ CREATE TABLE `usuario` (
   `sexo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `id_mascota` int(50) NOT NULL,
   `correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `contraña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `contraseña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `verificar_contraseña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `foto-perfil` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
