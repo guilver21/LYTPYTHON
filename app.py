@@ -13,6 +13,7 @@ app = Flask(__name__)
 app.secret_key = 'lytpython'
 
 # Configurar la base de datos MySQL
+app.config['MYSQL_CHARSET'] = 'utf8mb4'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
@@ -29,11 +30,61 @@ mysql = MySQL(app)
 def Index():
     return render_template('index.html')
 
+# Ruta principal (login)
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST' and 'correo-sesion' in request.form and 'pass-sesion' in request.form:
+        correo = request.form['correo-sesion']
+        password = request.form['pass-sesion']
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM usuario WHERE correo = %s AND contraseña = %s', (correo, password))
+        account = cursor.fetchone()
+        if account:
+            session['loggedin'] = True
+            session['id'] = account['id_usuario']
+            session['correo'] = account['correo']
+            flash('¡Inicio de sesión exitoso!', 'success')
+            return redirect(url_for('u_servicios'))
+        else:
+            flash('¡Correo o contraseña incorrectos!', 'danger')
+    return render_template('index.html')
 
-# Rutas para usuarios
-@app.route('/index/registro_usuario/')
+# Ruta de registro de usuario
+@app.route('/index/registro_usuario/', methods=['GET', 'POST'])
 def u_registrousuario():
+    if request.method == 'POST' and all(k in request.form for k in ['nombre', 'apellido', 'fecha_nacimiento', 'telefono', 'sexo', 'mascota', 'correo', 'contraseña', 'verificar_contraseña']):
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        fecha_nacimiento = request.form['fecha_nacimiento']
+        telefono = request.form['telefono']
+        sexo = request.form['sexo']
+        mascota = request.form['mascota']
+        correo = request.form['correo']
+        contraseña = request.form['contraseña']
+        verificar_contraseña = request.form['verificar_contraseña']
+        
+        if contraseña != verificar_contraseña:
+            flash('¡Las contraseñas no coinciden!', 'danger')
+            return redirect(url_for('u_registrousuario'))
+        
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM usuario WHERE correo = %s', (correo,))
+        account = cursor.fetchone()
+        
+        if account:
+            flash('¡El correo ya está registrado!', 'danger')
+        else:
+            cursor.execute('INSERT INTO mascota (tipoMascota) VALUES (%s)', (mascota,))
+            id_mascota = cursor.lastrowid
+            mysql.connection.commit()
+            
+            cursor.execute('INSERT INTO usuario (nombre, apellido, `fecha-nacimiento`, telefono, sexo, id_mascota, correo, contraseña, verificar_contraseña) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)', (nombre, apellido, fecha_nacimiento, telefono, sexo, id_mascota, correo, contraseña, verificar_contraseña))
+            mysql.connection.commit()
+            flash('¡Te has registrado exitosamente!', 'success')
+            return redirect(url_for('Index'))
     return render_template('usuario/u_registrousuario.html')
+
+
 
 @app.route('/home/usuario/')
 def u_servicios():

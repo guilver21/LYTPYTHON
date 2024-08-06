@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-08-2024 a las 20:44:00
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.2.13
+-- Tiempo de generación: 06-08-2024 a las 06:39:29
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -44,10 +43,10 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `adopcion` (
   `id_adopcion` int(50) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(120) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `descripcion` varchar(120) NOT NULL,
   `edad` int(2) NOT NULL,
-  `sexo` varchar(15) COLLATE utf8_spanish_ci NOT NULL
+  `sexo` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -60,10 +59,10 @@ CREATE TABLE `citas` (
   `id_citas` int(50) NOT NULL,
   `id_usuario` int(50) NOT NULL,
   `fecha` date NOT NULL,
-  `tanda` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `tanda` varchar(15) NOT NULL,
   `id_mascota` int(50) NOT NULL,
   `id_servicio` int(50) NOT NULL,
-  `descripcion` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+  `descripcion` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -76,8 +75,8 @@ CREATE TABLE `domicilio` (
   `id_adomicilio` int(50) NOT NULL,
   `id_usuario` int(50) NOT NULL,
   `fecha` date NOT NULL,
-  `direccion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `tanda` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(200) NOT NULL,
+  `tanda` varchar(15) NOT NULL,
   `id_mascota` int(50) NOT NULL,
   `id_vacuna` int(50) NOT NULL,
   `id_servicio` int(50) NOT NULL
@@ -93,10 +92,10 @@ CREATE TABLE `guarderia` (
   `id_guaderia` int(50) NOT NULL,
   `id_usuario` int(50) NOT NULL,
   `id_servicio` int(50) NOT NULL,
-  `desde` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `hasta` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `desde` varchar(15) NOT NULL,
+  `hasta` varchar(15) NOT NULL,
   `id_mascota` int(50) NOT NULL,
-  `descripcion` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+  `descripcion` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -107,8 +106,15 @@ CREATE TABLE `guarderia` (
 
 CREATE TABLE `mascota` (
   `id_mascota` int(11) NOT NULL,
-  `tipoMascota` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+  `tipoMascota` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `mascota`
+--
+
+INSERT INTO `mascota` (`id_mascota`, `tipoMascota`) VALUES
+(8, 'perro');
 
 -- --------------------------------------------------------
 
@@ -130,7 +136,7 @@ CREATE TABLE `rol` (
 
 CREATE TABLE `servicio` (
   `id_servicios` int(50) NOT NULL,
-  `servicio` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `servicio` varchar(50) NOT NULL,
   `precio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -142,17 +148,24 @@ CREATE TABLE `servicio` (
 
 CREATE TABLE `usuario` (
   `id_usuario` int(50) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `apellido` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `fecha-nacimiento` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `sexo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `fecha-nacimiento` varchar(15) NOT NULL,
+  `telefono` varchar(15) NOT NULL,
+  `sexo` varchar(50) NOT NULL,
   `id_mascota` int(50) NOT NULL,
-  `correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `contraseña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `verificar_contraseña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `contraseña` varchar(50) NOT NULL,
+  `verificar_contraseña` varchar(50) NOT NULL,
   `foto-perfil` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `fecha-nacimiento`, `telefono`, `sexo`, `id_mascota`, `correo`, `contraseña`, `verificar_contraseña`, `foto-perfil`) VALUES
+(4, 'Tiara', 'Peña', '2004-11-12', '8298427894', 'femenino', 8, 'tiara12p@gmail.com', '123', '123', '');
 
 -- --------------------------------------------------------
 
@@ -162,7 +175,7 @@ CREATE TABLE `usuario` (
 
 CREATE TABLE `vacuna` (
   `id_vacuna` int(50) NOT NULL,
-  `vacuna` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `vacuna` varchar(50) NOT NULL,
   `precio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -284,7 +297,7 @@ ALTER TABLE `guarderia`
 -- AUTO_INCREMENT de la tabla `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -302,7 +315,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `vacuna`

@@ -15,8 +15,16 @@
             <img src="{{ url_for('static', filename='imagenes/logo.png') }}" alt="Logo de la Veterinaria">
             <h1>Registro de usuario</h1>
         </header>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
         <form id="registroForm" class="formulario" method="POST" action="{{ url_for('u_registrousuario') }}">
-  
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="nombre">Nombres</label>
@@ -58,22 +66,22 @@
                     <input type="email" id="correo" name="correo" required>
                 </div>
                 <div class="form-group col-6">
-                    <label for="contrasena">Contraseña</label>
-                    <input type="password" id="contrasena" name="contrasena" required>
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" id="contraseña" name="contraseña" required>
                 </div>
                 <div class="form-group col-6">
-                    <label for="verificar_contrasena">Verificar contraseña</label>
-                    <input type="password" id="verificar_contrasena" name="verificar_contrasena" required>
+                    <label for="verificar_contraseña">Verificar contraseña</label>
+                    <input type="password" id="verificar_contraseña" name="verificar_contraseña" required>
                 </div>
             </div>
             <div class="form-group">
                 <button type="submit">Continuar</button>
             </div>
             <div class="form-group">
-                <p>¿Ya tienes una cuenta? <a href="/">Ingresa aquí</a></p>
+                <p>¿Ya tienes una cuenta? <a href="{{ url_for('login') }}">Ingresa aquí</a></p>
             </div>
         </form>
-         <script src="{{ url_for('static', filename='js/javascript-tiara.js') }}"></script>
+        
     </div>
    </main>
 </body>
