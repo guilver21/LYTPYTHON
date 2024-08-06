@@ -30,8 +30,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id_admin` int(50) NOT NULL,
-  `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `contraseña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `id_domicilio` int(50) NOT NULL,
   `id_citas` int(50) NOT NULL,
   `id_guarderia` int(50) NOT NULL,
