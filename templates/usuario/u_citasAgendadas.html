@@ -70,57 +70,77 @@
 
             <div class="linea"></div>
 
-           <div class="usuario">
-            <a href="#" onclick="abrirModal()">
-                <img src="{{ url_for('static', filename='imagenes/user-.png') }}" alt="Usuario">
-                <div class="info-usuario">
-                    <div class="nombre-email">
-                        <span class="nombre">Maria Lopez</span>
-                        <span class="email">marial@gmail.com</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="modal" id="modal">
-            <div class="modal-content">
-                <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
-                <div class="perfil-container">
-                    <div class="perfil-header">
-                        <div class="perfil-foto-container">
-                            <img id="perfil-foto" src="{{ url_for('static', filename='imagenes/default-profile.jpg') }}" alt="">
-                        </div>
-                        <div class="perfil-info">
-                            <h1>Maria Lopez</h1>
-                            <p>Email: <span id="email">marial@gmail.com</span></p>
-                            <p>Teléfono: <span id="telefono">809 456 7890</span></p>
-                            <p>Mascota: <span id="mascota">Perro</span></p>
+            <div class="usuario">
+                <a href="#" onclick="abrirModal()">
+                    <img src="{{ url_for('static', filename='imagenes/user-.png') }}" alt="Usuario">
+                    <div class="info-usuario">
+                        <div class="nombre-email">
+                            <span class="nombre">{{ nombre }} {{ apellido }}</span>
+                            <span class="email">{{ correo }}</span>
                         </div>
                     </div>
-                    <div class="accion">
-                      <input type="file" id="subir-foto" accept="image/*" onchange="changeProfilePic()" >
-                      <label for="subir-foto">Cambiar foto de perfil</label>
-                     <button class="boton-cs-perfil" id="cerrar-sesion">Cerrar Sesión</button>
-                     </div>
+                </a>
+            </div>
+            
+            <div class="modal" id="modal">
+                <div class="modal-content">
+                    <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+                    <div class="perfil-container">
+                        <div class="perfil-header">
+                            <div class="perfil-foto-container">
+                                <img id="perfil-foto" src="{{ url_for('static', filename='imagenes/default-profile.jpg') }}" alt="">
+                            </div>
+                            <div class="perfil-info">
+                                <h1>{{ nombre }} {{ apellido }}</h1>
+                                <p>Email: <span id="email">{{ correo }}</span></p>
+                                <p>Teléfono: <span id="telefono">{{ telefono }}</span></p>
+                                <p>Mascota: <span id="mascota">{{ mascota }}</span></p>
+                            </div>
+                        </div>
+                        <div class="accion">
+                            <input type="file" id="subir-foto" accept="image/*" onchange="changeProfilePic()">
+                            <label for="subir-foto">Cambiar foto de perfil</label>
+                            <button class="boton-cs-perfil" id="cerrar-sesion">Cerrar Sesión</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
+
     <main class="con-agendadas">
         <div class="con-tabla">
         <table id="citasTable">
-        <thead>
-            <tr>
-                <th>Fecha</th>
-                <th>Tanda</th>
-                <th>Servicio</th>
-                <th>Mascota</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Fecha</th>
+                    <th>Teléfono</th>
+                    <th>Tipo de Mascota</th>
+                    <th>Tanda</th>
+                    <th>Servicios</th>
+                    <th>Mensaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cita in citas %}
+                <tr>
+                    <td>{{ cita[1] }}</td>
+                    <td>{{ cita[2] }}</td>
+                    <td>{{ cita[3] }}</td>
+                    <td>{{ cita[4] }}</td>
+                    <td>{{ cita[5] }}</td>
+                    <td>{{ cita[6] }}</td>
+                    <td>{{ cita[7] }}</td>
+                    <td>{{ cita[8] }}</td>
+                    <td>{{ cita[9] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         </div>
         <div class="agen">
             <button onclick="volverAlFormulario()">Nueva cita</button>
@@ -128,6 +148,6 @@
     </main>
 
     <script src="{{ url_for('static', filename='js/header.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/tabla.js') }}"></script>
+    
 </body>
 </html>

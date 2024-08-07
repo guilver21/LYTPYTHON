@@ -74,13 +74,13 @@
                     <img src="{{ url_for('static', filename='imagenes/user-.png') }}" alt="Usuario">
                     <div class="info-usuario">
                         <div class="nombre-email">
-                            <span class="nombre">Maria Lopez</span>
-                            <span class="email">marial@gmail.com</span>
+                            <span class="nombre">{{ nombre }} {{ apellido }}</span>
+                            <span class="email">{{ correo }}</span>
                         </div>
                     </div>
                 </a>
             </div>
-
+            
             <div class="modal" id="modal">
                 <div class="modal-content">
                     <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
@@ -90,10 +90,10 @@
                                 <img id="perfil-foto" src="{{ url_for('static', filename='imagenes/default-profile.jpg') }}" alt="">
                             </div>
                             <div class="perfil-info">
-                                <h1>Maria Lopez</h1>
-                                <p>Email: <span id="email">marial@gmail.com</span></p>
-                                <p>Teléfono: <span id="telefono">809 456 7890</span></p>
-                                <p>Mascota: <span id="mascota">Perro</span></p>
+                                <h1>{{ nombre }} {{ apellido }}</h1>
+                                <p>Email: <span id="email">{{ correo }}</span></p>
+                                <p>Teléfono: <span id="telefono">{{ telefono }}</span></p>
+                                <p>Mascota: <span id="mascota">{{ mascota }}</span></p>
                             </div>
                         </div>
                         <div class="accion">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-08-2024 a las 06:39:29
+-- Tiempo de generación: 07-08-2024 a las 17:05:05
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -114,7 +114,8 @@ CREATE TABLE `mascota` (
 --
 
 INSERT INTO `mascota` (`id_mascota`, `tipoMascota`) VALUES
-(8, 'perro');
+(8, 'perro'),
+(9, 'gato');
 
 -- --------------------------------------------------------
 
@@ -165,7 +166,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `fecha-nacimiento`, `telefono`, `sexo`, `id_mascota`, `correo`, `contraseña`, `verificar_contraseña`, `foto-perfil`) VALUES
-(4, 'Tiara', 'Peña', '2004-11-12', '8298427894', 'femenino', 8, 'tiara12p@gmail.com', '123', '123', '');
+(4, 'Tiara', 'Peña', '2004-11-12', '8298427894', 'femenino', 8, 'tiara12p@gmail.com', '123', '123', ''),
+(5, 'Ash', 'Then ', '2004-12-21', '8298763454', 'femenino', 9, 'ash@gmail.com', '12345', '12345', '');
 
 -- --------------------------------------------------------
 
@@ -297,7 +299,7 @@ ALTER TABLE `guarderia`
 -- AUTO_INCREMENT de la tabla `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -315,7 +317,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `vacuna`

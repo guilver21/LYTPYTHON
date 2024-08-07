@@ -1,9 +1,7 @@
 import os
-from flask import Flask, render_template, request, redirect, session, send_from_directory, url_for, flash
-# from flask_mysqldb import MySQL
+from flask import Flask, render_template, request, redirect, session, url_for, flash
 import MySQLdb.cursors
 from datetime import datetime
-# Importar el enlace a base de datos MySQL
 from flask_mysqldb import MySQL
 
 # Crear la aplicación
@@ -19,11 +17,8 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'petvet'
 
-
 # Inicializar MySQL
 mysql = MySQL(app)
-
-
 
 # Inicio de sesión y registro
 @app.route('/')
@@ -43,6 +38,10 @@ def login():
             session['loggedin'] = True
             session['id'] = account['id_usuario']
             session['correo'] = account['correo']
+            session['nombre'] = account['nombre']
+            session['apellido'] = account['apellido']
+            session['telefono'] = account['telefono']
+            session['id_mascota'] = account['id_mascota']
             flash('¡Inicio de sesión exitoso!', 'success')
             return redirect(url_for('u_servicios'))
         else:
@@ -84,19 +83,61 @@ def u_registrousuario():
             return redirect(url_for('Index'))
     return render_template('usuario/u_registrousuario.html')
 
-
-
 @app.route('/home/usuario/')
 def u_servicios():
-    return render_template('usuario/u_servicios.html')
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT tipoMascota FROM mascota WHERE id_mascota = %s', [session['id_mascota']])
+        mascota = cursor.fetchone()
+        return render_template('usuario/u_servicios.html', nombre=session['nombre'], apellido=session['apellido'], telefono=session['telefono'], correo=session['correo'], mascota=mascota['tipoMascota'])
+    else:
+        return redirect(url_for('Index'))
+    
 
 @app.route('/citas/agendadas/usuario/')
 def u_citasAgendadas():
-    return render_template('usuario/u_citasAgendadas.html')
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT tipoMascota FROM mascota WHERE id_mascota = %s', [session['id_mascota']])
+        mascota = cursor.fetchone()
+        return render_template('usuario/u_citasAgendadas.html', nombre=session['nombre'], apellido=session['apellido'], telefono=session['telefono'], correo=session['correo'], mascota=mascota['tipoMascota'])
+    else:
+        return redirect(url_for('Index'))
 
 @app.route('/agendarcitas/usuario/')
 def u_agendarCita():
-    return render_template('usuario/u_agendarCita.html')
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT tipoMascota FROM mascota WHERE id_mascota = %s', [session['id_mascota']])
+        mascota = cursor.fetchone()
+        return render_template('usuario/u_agendarCita.html', nombre=session['nombre'], apellido=session['apellido'], telefono=session['telefono'], correo=session['correo'], mascota=mascota['tipoMascota'])
+    else:
+        return redirect(url_for('Index'))
+
+@app.route('/agendar_cita', methods=['POST'])
+def agendar_cita():
+    if 'loggedin' in session:
+        id_usuario = session['id']  
+        fecha = request.form['fecha']
+        tanda = request.form['tanda']
+        id_mascota = request.form['mascota']  
+        id_servicio = request.form.get('servicio', 'valor_por_defecto')
+        descripcion = request.form.get('descripcion', 'Valor por defecto')
+
+
+        cursor = mysql.connection.cursor()
+        sql = """
+        INSERT INTO citas (id_usuario, fecha, tanda, id_mascota, id_servicio, descripcion)
+        VALUES (%s, %s, %s, %s, %s, %s)
+        """
+        cursor.execute(sql, (id_usuario, fecha, tanda, id_mascota, id_servicio, descripcion))
+        mysql.connection.commit()
+        cursor.close()
+
+        return redirect(url_for('u_citasAgendadas'))
+    else:
+        return redirect(url_for('Index'))
+
 
 @app.route('/adopcion/usuario/')
 def u_adopcion():
@@ -141,7 +182,7 @@ def a_servicios():
 
 @app.route('/admin/agenda/citas/')
 def a_agenda_citas():
-    return render_template('admin/a_AgendadasGuarderia.html')  
+    return render_template('admin/a_AgendadasGuarderia.html')
 
 @app.route('/admin/despliegue/guarderia/')
 def a_despliegueGuarderia():
